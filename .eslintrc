@@ -1,5 +1,5 @@
 {
-  "extends": ["eslint", "airbnb", "eslint:recommended", "plugin:react/recommended"],
+  "extends": ["eslint", "airbnb", "eslint:recommended", "plugin:react/recommended", "plugin:prettier/recommended"],
   "parser": "babel-eslint",
   "env": {
     "browser": true
@@ -11,7 +11,8 @@
   "plugins": [
     "react",
     "jsx-a11y",
-    "import"
+    "import",
+    "prettier"
   ],
   "parserOptions": {
     "ecmaVersion": 7,
@@ -21,6 +22,7 @@
     }
   },
   "rules": {
+    "prettier/prettier": "error",
     "arrow-body-style": "error",
     "arrow-parens": "error",
     "arrow-spacing": "error",
