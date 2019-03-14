@@ -7,7 +7,8 @@ class TodoList extends React.Component {
   }
 
   render() {
-    const list = this.props.todos.map(todo => {
+    const { todos } = this.props
+    const list = todos.map(todo => {
       return (
         <li key={todo.id}>
           {todo.id}: {todo.title}
