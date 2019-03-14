@@ -16,8 +16,8 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <AddTodo OnSubmitTitle={this.handleOnSubmit} />
-        <TodoList todos={this.state.todos} handleDelete={this.deleteTodo} />
+        <AddTodo OnSubmitTitle={this.addTodo} />
+        <TodoList todos={this.state.todos} OnClickDelete={this.deleteTodo} />
       </div>
     )
   }
@@ -31,7 +31,7 @@ class App extends React.Component {
     })
   }
 
-  handleOnSubmit = title => {
+  addTodo = title => {
     const { todos, nextId } = this.state
     this.setState({
       todos: [...todos, { id: nextId, title: title }],
