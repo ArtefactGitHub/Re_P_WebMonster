@@ -11,7 +11,6 @@ class App extends React.Component {
     super(props)
     this.state = {
       todos: [],
-      nextId: 1,
     }
 
     this.host = "http://localhost:3001/"
@@ -48,16 +47,15 @@ class App extends React.Component {
   }
 
   addTodo = title => {
-    const { todos, nextId } = this.state
-    this.setState({
-      todos: [...todos, { id: nextId, title: title }],
-    })
-    this.setState({ nextId: nextId + 1 })
-
+    const { todos } = this.state
+    const todo = { title: title, description: "des" }
     axios
-      .post(`${this.host}todos`)
+      .post(`${this.host}todos`, todo)
       .then(res => {
         console.log(res)
+        this.setState({
+          todos: [...todos, res.data],
+        })
       })
       .catch(data => {
         console.log(data)
