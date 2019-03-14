@@ -17,16 +17,26 @@ class App extends React.Component {
     return (
       <div className="App">
         <AddTodo OnSubmitTitle={this.handleOnSubmit} />
-        <TodoList todos={this.state.todos} />
+        <TodoList todos={this.state.todos} handleDelete={this.deleteTodo} />
       </div>
     )
   }
 
-  handleOnSubmit = title => {
+  deleteTodo = id => {
+    const { todos } = this.state
     this.setState({
-      todos: [...this.state.todos, { id: this.state.nextId, title: title }],
+      todos: todos.filter(todo => {
+        return todo.id !== id
+      }),
     })
-    this.setState({ nextId: this.state.nextId + 1 })
+  }
+
+  handleOnSubmit = title => {
+    const { todos, nextId } = this.state
+    this.setState({
+      todos: [...todos, { id: nextId, title: title }],
+    })
+    this.setState({ nextId: nextId + 1 })
   }
 }
 

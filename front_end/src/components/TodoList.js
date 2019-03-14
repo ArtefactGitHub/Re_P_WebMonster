@@ -12,6 +12,7 @@ class TodoList extends React.Component {
       return (
         <li key={todo.id}>
           {todo.id}: {todo.title}
+          <button onClick={event => this.handleDelete(todo.id)}>delete</button>
         </li>
       )
     })
@@ -22,6 +23,11 @@ class TodoList extends React.Component {
         <ul>{list}</ul>
       </div>
     )
+  }
+
+  handleDelete = id => {
+    const { handleDelete } = this.props
+    handleDelete(id)
   }
 }
 
