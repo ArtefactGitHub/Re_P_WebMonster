@@ -5,7 +5,7 @@ class TodosController < ApplicationController
   end
 
   def create
-    @todo = Todo.create(params[:todo])
+    @todo = Todo.create(todo_params)
     render json: @todo
   end
 
@@ -22,5 +22,11 @@ class TodosController < ApplicationController
     else
       render json: todo.errors, status: :unprocessable_entity
     end
+  end
+
+  private
+
+  def todo_params
+    params.require(:todo).permit(:title, :description, :priority, :deadline)
   end
 end

@@ -4,6 +4,8 @@ import "./App.css"
 import AddTodo from "./components/AddTodo"
 import TodoList from "./components/TodoList"
 
+import axios from "axios"
+
 class App extends React.Component {
   constructor(props) {
     super(props)
@@ -11,6 +13,20 @@ class App extends React.Component {
       todos: [],
       nextId: 1,
     }
+
+    this.host = "http://localhost:3001/"
+  }
+
+  componentDidMount() {
+    axios
+      .get(`${this.host}todos`)
+      .then(res => {
+        console.log(res)
+        this.setState({ todos: res.data })
+      })
+      .catch(data => {
+        console.log(data)
+      })
   }
 
   render() {
@@ -37,6 +53,15 @@ class App extends React.Component {
       todos: [...todos, { id: nextId, title: title }],
     })
     this.setState({ nextId: nextId + 1 })
+
+    axios
+      .post(`${this.host}todos`)
+      .then(res => {
+        console.log(res)
+      })
+      .catch(data => {
+        console.log(data)
+      })
   }
 }
 
