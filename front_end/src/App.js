@@ -9,6 +9,7 @@ class App extends React.Component {
     super(props)
     this.state = {
       todos: [],
+      nextId: 1,
     }
   }
 
@@ -16,13 +17,16 @@ class App extends React.Component {
     return (
       <div className="App">
         <AddTodo OnSubmitTitle={this.handleOnSubmit} />
-        <TodoList />
+        <TodoList todos={this.state.todos} />
       </div>
     )
   }
 
   handleOnSubmit = title => {
-    this.setState({ todos: [...this.state.todos, { title: title }] })
+    this.setState({
+      todos: [...this.state.todos, { id: this.state.nextId, title: title }],
+    })
+    this.setState({ nextId: this.state.nextId + 1 })
   }
 }
 
