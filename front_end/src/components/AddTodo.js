@@ -3,7 +3,11 @@ import React from "react"
 class AddTodo extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
+    this.state = this.initial_state()
+  }
+
+  initial_state = () => {
+    return {
       title: "",
       description: "",
       priority: 0,
@@ -45,7 +49,7 @@ class AddTodo extends React.Component {
   handleOnSubmit = event => {
     event.preventDefault()
     this.props.OnSubmitTitle(this.state)
-    this.setState({ title: "", description: "", priority: 0 })
+    this.setState(this.initial_state())
   }
 }
 
