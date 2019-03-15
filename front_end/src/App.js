@@ -53,9 +53,8 @@ class App extends React.Component {
       })
   }
 
-  addTodo = title => {
+  addTodo = todo => {
     const { todos } = this.state
-    const todo = { title: title, description: "des" }
     axios
       .post(`${this.host}todos`, todo)
       .then(res => {
