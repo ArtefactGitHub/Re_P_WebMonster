@@ -20,7 +20,6 @@ class App extends React.Component {
     axios
       .get(`${this.host}todos`)
       .then(res => {
-        console.log(res)
         this.setState({ todos: res.data })
       })
       .catch(data => {
@@ -39,11 +38,19 @@ class App extends React.Component {
 
   deleteTodo = id => {
     const { todos } = this.state
-    this.setState({
-      todos: todos.filter(todo => {
-        return todo.id !== id
-      }),
-    })
+
+    axios
+      .delete(`${this.host}todos/${id}`)
+      .then(res => {
+        this.setState({
+          todos: todos.filter(todo => {
+            return todo.id !== id
+          }),
+        })
+      })
+      .catch(data => {
+        console.log(data)
+      })
   }
 
   addTodo = title => {
@@ -52,7 +59,6 @@ class App extends React.Component {
     axios
       .post(`${this.host}todos`, todo)
       .then(res => {
-        console.log(res)
         this.setState({
           todos: [...todos, res.data],
         })
