@@ -13,7 +13,7 @@ class App extends React.Component {
       todos: [],
     }
 
-    this.host = "http://localhost:3001/"
+    this.host = process.env.REACT_APP_BACKEND_URL
   }
 
   componentDidMount() {
