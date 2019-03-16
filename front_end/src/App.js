@@ -1,10 +1,11 @@
 import React from "react"
+import { connect } from "react-redux"
+import axios from "axios"
+
 import "./App.scss"
 
 import AddTodo from "./components/AddTodo"
 import TodoList from "./components/TodoList"
-
-import axios from "axios"
 
 class App extends React.Component {
   constructor(props) {
@@ -68,4 +69,28 @@ class App extends React.Component {
   }
 }
 
-export default App
+const mapStateToProps = state => {
+  return {
+    todos: state,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    loadTodo: todos => {
+      dispatch({ type: "LOAD_TODO", payload: { todos } })
+    },
+    addTodo: todo => {
+      dispatch({ type: "ADD_TODO", payload: { todo } })
+    },
+    deleteTodo: id => {
+      dispatch({ type: "DELETE_TODO", payload: { id } })
+    },
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App)
+// export default App
