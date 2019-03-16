@@ -3,33 +3,53 @@ import React from "react"
 class AddTodo extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {
-      inputText: "",
+    this.state = this.initial_state()
+  }
+
+  initial_state = () => {
+    return {
+      title: "",
+      description: "",
+      priority: 0,
+      // deadline:
     }
   }
 
   render() {
-    const { inputText } = this.state
+    const { title, description, priority } = this.state
     return (
       <div>
         <h2>AddTodo</h2>
         <form onSubmit={this.handleOnSubmit}>
-          <input onChange={this.handleOnChange} value={inputText} />
+          <input
+            required={true}
+            onChange={event => this.handleOnChange(event, "title")}
+            value={title}
+          />
+          <textarea
+            onChange={event => this.handleOnChange(event, "description")}
+            value={description}
+            cols="40"
+            rows="5"
+          />
+          <input
+            onChange={event => this.handleOnChange(event, "priority")}
+            value={priority}
+          />
           <input type="submit" value="Add" />
         </form>
       </div>
     )
   }
 
-  handleOnChange = event => {
-    this.setState({ inputText: event.target.value })
+  handleOnChange = (event, key) => {
+    this.setState({ [key]: event.target.value })
   }
 
   handleOnSubmit = event => {
-    const { inputText } = this.state
     event.preventDefault()
-    this.props.OnSubmitTitle(inputText)
-    this.setState({ inputText: "" })
+    this.props.OnSubmitTitle(this.state)
+    this.setState(this.initial_state())
   }
 }
 

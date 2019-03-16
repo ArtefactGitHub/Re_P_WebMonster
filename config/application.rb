@@ -26,10 +26,22 @@ module RTPracticerailsreact
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+    config.i18n.default_locale = :ja
+    config.i18n.available_locales = %i[ja en]
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
+
+    config.generators do |g|
+      g.test_framework false
+      g.helper false
+      g.assets false
+    end
 
     # Only loads a smaller set of middleware suitable for API only apps.
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # エラー対応："No 'Access-Control-Allow-Origin' header is present on the requested resource.""
+    config.x.cors_allowed_origins = ENV.fetch('CORS_ALLOWED_ORIGINS', 'http://localhost:3000')
   end
 end

@@ -1,16 +1,30 @@
 import React from "react"
-import "./App.css"
+import "./App.scss"
 
 import AddTodo from "./components/AddTodo"
 import TodoList from "./components/TodoList"
+
+import axios from "axios"
 
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       todos: [],
-      nextId: 1,
     }
+
+    this.host = "http://localhost:3001/"
+  }
+
+  componentDidMount() {
+    axios
+      .get(`${this.host}todos`)
+      .then(res => {
+        this.setState({ todos: res.data })
+      })
+      .catch(data => {
+        console.log(data)
+      })
   }
 
   render() {
@@ -24,19 +38,33 @@ class App extends React.Component {
 
   deleteTodo = id => {
     const { todos } = this.state
-    this.setState({
-      todos: todos.filter(todo => {
-        return todo.id !== id
-      }),
-    })
+
+    axios
+      .delete(`${this.host}todos/${id}`)
+      .then(res => {
+        this.setState({
+          todos: todos.filter(todo => {
+            return todo.id !== id
+          }),
+        })
+      })
+      .catch(data => {
+        console.log(data)
+      })
   }
 
-  addTodo = title => {
-    const { todos, nextId } = this.state
-    this.setState({
-      todos: [...todos, { id: nextId, title: title }],
-    })
-    this.setState({ nextId: nextId + 1 })
+  addTodo = todo => {
+    const { todos } = this.state
+    axios
+      .post(`${this.host}todos`, todo)
+      .then(res => {
+        this.setState({
+          todos: [...todos, res.data],
+        })
+      })
+      .catch(data => {
+        console.log(data)
+      })
   }
 }
 

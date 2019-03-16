@@ -11,10 +11,13 @@ class TodoList extends React.Component {
     const list = todos.map(todo => {
       return (
         <li key={todo.id}>
-          {todo.id}: {todo.title}
-          <button onClick={event => this.handleOnClickDelete(todo.id)}>
-            delete
-          </button>
+          <div>
+            {todo.id}: {todo.title}: {todo.priority}
+            <button onClick={event => this.handleOnClickDelete(todo.id)}>
+              delete
+            </button>
+          </div>
+          <div>{todo.description}</div>
         </li>
       )
     })
