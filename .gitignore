@@ -27,3 +27,6 @@ vendor/bundle
 
 # Ignore node_modules
 node_modules/
+
+# Ignore front_end .env
+front_end/.env*
