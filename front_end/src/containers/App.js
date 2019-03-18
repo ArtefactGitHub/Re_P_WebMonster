@@ -2,25 +2,21 @@ import React from "react"
 import { connect } from "react-redux"
 
 import AppPresenter from "../components/App"
-import {
-  componentDidMount,
-  handleSubmitAddTodo,
-  handleClickDeleteTodo,
-} from "../actions/App"
+import { loadTodo, addTodo, deleteTodo } from "../actions/App"
 
 class App extends React.Component {
   componentDidMount() {
-    this.props.componentDidMount()
+    this.props.loadTodo()
   }
 
   render() {
-    const { todos, handleSubmitAddTodo, handleClickDeleteTodo } = this.props
+    const { todos, addTodo, deleteTodo } = this.props
     return (
       <div>
         <AppPresenter
           todos={todos}
-          handleSubmitAddTodo={handleSubmitAddTodo}
-          handleClickDeleteTodo={handleClickDeleteTodo}
+          handleSubmitAddTodo={addTodo}
+          handleClickDeleteTodo={deleteTodo}
         />
       </div>
     )
@@ -35,14 +31,14 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    componentDidMount: () => {
-      dispatch(componentDidMount())
+    loadTodo: () => {
+      dispatch(loadTodo())
     },
-    handleSubmitAddTodo: todo => {
-      dispatch(handleSubmitAddTodo(todo))
+    addTodo: todo => {
+      dispatch(addTodo(todo))
     },
-    handleClickDeleteTodo: id => {
-      dispatch(handleClickDeleteTodo(id))
+    deleteTodo: id => {
+      dispatch(deleteTodo(id))
     },
   }
 }

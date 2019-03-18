@@ -1,7 +1,7 @@
 import axios from "axios"
 import Settings from "../config/application"
 
-const componentDidMount = () => {
+const loadTodo = () => {
   return dispatch => {
     axios
       .get(`${Settings.HOST_URL}todos`)
@@ -14,7 +14,7 @@ const componentDidMount = () => {
   }
 }
 
-const handleSubmitAddTodo = todo => {
+const addTodo = todo => {
   return dispatch => {
     axios
       .post(`${Settings.HOST_URL}todos`, todo)
@@ -27,7 +27,7 @@ const handleSubmitAddTodo = todo => {
   }
 }
 
-const handleClickDeleteTodo = id => {
+const deleteTodo = id => {
   return dispatch => {
     axios
       .delete(`${Settings.HOST_URL}todos/${id}`)
@@ -40,4 +40,4 @@ const handleClickDeleteTodo = id => {
   }
 }
 
-export { componentDidMount, handleSubmitAddTodo, handleClickDeleteTodo }
+export { loadTodo, addTodo, deleteTodo }
