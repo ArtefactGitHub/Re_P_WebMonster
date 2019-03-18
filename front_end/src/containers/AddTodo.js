@@ -1,20 +1,10 @@
 import React from "react"
+import { connect } from "react-redux"
 import AddTodoPresenter from "../components/AddTodo"
 
 class AddTodo extends React.Component {
-  constructor(props) {
-    super(props)
-    this.initial_state = {
-      title: "",
-      description: "",
-      priority: 0,
-      // deadline:
-    }
-    this.state = this.initial_state
-  }
-
   render() {
-    const { title, description, priority } = this.state
+    const { title, description, priority } = this.props.todo
     return (
       <div>
         <AddTodoPresenter
@@ -29,14 +19,37 @@ class AddTodo extends React.Component {
   }
 
   handleOnChange = (event, key) => {
-    this.setState({ [key]: event.target.value })
+    this.props.changeParam(key, event.target.value)
   }
 
   handleOnSubmit = event => {
     event.preventDefault()
-    this.props.OnSubmitTitle(this.state)
-    this.setState(this.initial_state)
+    this.props.OnSubmitTitle(this.props.todo)
+    this.props.reset()
   }
 }
 
-export default AddTodo
+const mapStateToProps = state => {
+  return {
+    todo: state.addTodo,
+  }
+}
+
+const mapDispatchToProps = dispatch => {
+  return {
+    changeParam: (key, value) => {
+      dispatch({
+        type: `CHANGE_${key.toUpperCase()}`,
+        payload: { [key]: value },
+      })
+    },
+    reset: () => {
+      dispatch({ type: "RESET" })
+    },
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AddTodo)
