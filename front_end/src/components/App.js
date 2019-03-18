@@ -2,7 +2,7 @@ import React from "react"
 
 import "../App.scss"
 
-import AddTodo from "./AddTodo"
+import AddTodo from "../containers/AddTodo"
 import TodoList from "./TodoList"
 
 const App = ({ todos, handleSubmitAddTodo, handleClickDeleteTodo }) => {
