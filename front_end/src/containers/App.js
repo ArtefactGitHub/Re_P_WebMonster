@@ -16,7 +16,7 @@ class App extends React.Component {
         <AppPresenter
           todos={todos}
           handleSubmitAddTodo={addTodo}
-          handleClickDeleteTodo={deleteTodo}
+          handleOnClickDeleteTodo={deleteTodo}
         />
       </div>
     )
