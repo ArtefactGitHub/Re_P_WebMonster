@@ -25,7 +25,7 @@ class App extends React.Component {
 
 const mapStateToProps = state => {
   return {
-    todos: state,
+    todos: state.todos,
   }
 }
 
