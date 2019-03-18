@@ -4,16 +4,13 @@ import AddTodoPresenter from "../components/AddTodo"
 class AddTodo extends React.Component {
   constructor(props) {
     super(props)
-    this.state = this.initial_state()
-  }
-
-  initial_state = () => {
-    return {
+    this.initial_state = {
       title: "",
       description: "",
       priority: 0,
       // deadline:
     }
+    this.state = this.initial_state
   }
 
   render() {
@@ -38,7 +35,7 @@ class AddTodo extends React.Component {
   handleOnSubmit = event => {
     event.preventDefault()
     this.props.OnSubmitTitle(this.state)
-    this.setState(this.initial_state())
+    this.setState(this.initial_state)
   }
 }
 
