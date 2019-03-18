@@ -1,11 +1,10 @@
 import axios from "axios"
-
-const HOST_URL = process.env.REACT_APP_BACKEND_URL
+import Settings from "../config/application"
 
 const componentDidMount = () => {
   return dispatch => {
     axios
-      .get(`${HOST_URL}todos`)
+      .get(`${Settings.HOST_URL}todos`)
       .then(res => {
         dispatch({ type: "LOAD_TODO", payload: { todos: res.data } })
       })
@@ -18,7 +17,7 @@ const componentDidMount = () => {
 const handleSubmitAddTodo = todo => {
   return dispatch => {
     axios
-      .post(`${HOST_URL}todos`, todo)
+      .post(`${Settings.HOST_URL}todos`, todo)
       .then(res => {
         dispatch({ type: "ADD_TODO", payload: { todo: res.data } })
       })
@@ -31,7 +30,7 @@ const handleSubmitAddTodo = todo => {
 const handleClickDeleteTodo = id => {
   return dispatch => {
     axios
-      .delete(`${HOST_URL}todos/${id}`)
+      .delete(`${Settings.HOST_URL}todos/${id}`)
       .then(res => {
         dispatch({ type: "DELETE_TODO", payload: { id: id } })
       })
