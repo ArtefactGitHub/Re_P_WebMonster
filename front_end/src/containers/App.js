@@ -1,9 +1,29 @@
+import React from "react"
 import { connect } from "react-redux"
 import axios from "axios"
 
-import App from "../components/App"
+import AppPresenter from "../components/App"
 
 const HOST_URL = process.env.REACT_APP_BACKEND_URL
+
+class App extends React.Component {
+  componentDidMount() {
+    this.props.componentDidMount()
+  }
+
+  render() {
+    const { todos, handleSubmitAddTodo, handleClickDeleteTodo } = this.props
+    return (
+      <div>
+        <AppPresenter
+          todos={todos}
+          handleSubmitAddTodo={handleSubmitAddTodo}
+          handleClickDeleteTodo={handleClickDeleteTodo}
+        />
+      </div>
+    )
+  }
+}
 
 const componentDidMount = () => {
   return dispatch => {
