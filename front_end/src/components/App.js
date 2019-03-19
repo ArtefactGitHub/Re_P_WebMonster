@@ -1,6 +1,6 @@
 import React from "react"
 
-import "../App.scss"
+import "../stylesheets/App.scss"
 
 import AddTodo from "../containers/AddTodo"
 import TodoList from "../containers/TodoList"
