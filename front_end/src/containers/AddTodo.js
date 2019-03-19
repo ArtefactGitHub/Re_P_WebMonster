@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import AddTodoPresenter from "../components/AddTodo"
+import { changeParam, reset } from "../actions/AddTodo"
 
 class AddTodo extends React.Component {
   render() {
@@ -38,13 +39,10 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     changeParam: (key, value) => {
-      dispatch({
-        type: `CHANGE_${key.toUpperCase()}`,
-        payload: { [key]: value },
-      })
+      dispatch(changeParam(key, value))
     },
     reset: () => {
-      dispatch({ type: "RESET" })
+      dispatch(reset())
     },
   }
 }
