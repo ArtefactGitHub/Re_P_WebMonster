@@ -1,39 +1,26 @@
 import React from "react"
 
-class TodoList extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {}
-  }
-
-  render() {
-    const { todos } = this.props
-    const list = todos.map(todo => {
-      return (
-        <li key={todo.id}>
-          <div>
-            {todo.id}: {todo.title}: {todo.priority}
-            <button onClick={event => this.handleOnClickDelete(todo.id)}>
-              delete
-            </button>
-          </div>
-          <div>{todo.description}</div>
-        </li>
-      )
-    })
-
+const TodoList = ({ todos, handleOnClickDeleteTodo }) => {
+  const list = todos.map(todo => {
     return (
-      <div>
-        <h2>TodoList</h2>
-        <ul>{list}</ul>
-      </div>
+      <li key={todo.id}>
+        <div>
+          {todo.id}: {todo.title}: {todo.priority}
+          <button onClick={event => handleOnClickDeleteTodo(todo.id)}>
+            delete
+          </button>
+        </div>
+        <div>{todo.description}</div>
+      </li>
     )
-  }
+  })
 
-  handleOnClickDelete = id => {
-    const { OnClickDelete } = this.props
-    OnClickDelete(id)
-  }
+  return (
+    <div>
+      <h2>TodoList</h2>
+      <ul>{list}</ul>
+    </div>
+  )
 }
 
 export default TodoList
