@@ -1,18 +1,11 @@
 import React from "react"
-
 import "../stylesheets/App.scss"
+import Top from "../containers/Top"
 
-import AddTodo from "../containers/AddTodo"
-import TodoList from "../containers/TodoList"
-
-const App = ({ todos, handleSubmitAddTodo, handleOnClickDeleteTodo }) => {
+const App = () => {
   return (
     <div className="App">
-      <AddTodo OnSubmitTitle={handleSubmitAddTodo} />
-      <TodoList
-        todos={todos}
-        handleOnClickDeleteTodo={handleOnClickDeleteTodo}
-      />
+      <Top />
     </div>
   )
 }
