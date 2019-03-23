@@ -1,9 +1,7 @@
 import { combineReducers } from "redux"
 
-import todos from "./todos"
-import addTodo from "./add_todo"
+import monsters from "./monsters"
 
 export default combineReducers({
-  todos,
-  addTodo,
+  monsters,
 })
