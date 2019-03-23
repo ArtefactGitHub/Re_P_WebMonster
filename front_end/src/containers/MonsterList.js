@@ -1,10 +1,10 @@
 import React from "react"
 import { connect } from "react-redux"
 
-import TopPresenter from "../components/Top"
+import MonsterListPresenter from "../components/MonsterList"
 import { loadMonsters } from "../actions/Monsters"
 
-class Top extends React.Component {
+class MonsterList extends React.Component {
   componentDidMount() {
     this.props.loadMonsters()
   }
@@ -13,7 +13,7 @@ class Top extends React.Component {
     const { monsters } = this.props
     return (
       <div>
-        <TopPresenter monsters={monsters} />
+        <MonsterListPresenter monsters={monsters} />
       </div>
     )
   }
@@ -36,4 +36,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Top)
+)(MonsterList)

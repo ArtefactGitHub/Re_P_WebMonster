@@ -1,6 +1,6 @@
 import React from "react"
 
-const Top = ({ monsters }) => {
+const MonsterList = ({ monsters }) => {
   const list = monsters.map(monster => {
     return (
       <li key={monster.id}>
@@ -22,4 +22,4 @@ const Top = ({ monsters }) => {
   )
 }
 
-export default Top
+export default MonsterList

@@ -1,11 +1,11 @@
 import React from "react"
 import "../stylesheets/App.scss"
-import Top from "../containers/Top"
+import MonsterList from "../containers/MonsterList"
 
 const App = () => {
   return (
     <div className="App">
-      <Top />
+      <MonsterList />
     </div>
   )
 }
