@@ -2,35 +2,44 @@ import React from "react"
 import { connect } from "react-redux"
 
 import CreateMonsterPresenter from "../components/CreateMonster"
-import { loadMonsters } from "../actions/Monsters"
 
 class CreateMonster extends React.Component {
-  componentDidMount() {
-    this.props.loadMonsters()
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: "",
+      description: "",
+    }
   }
-
   render() {
-    const { monsters } = this.props
     return (
       <div>
-        <CreateMonsterPresenter monsters={monsters} />
+        <CreateMonsterPresenter
+          handleOnChange={this.handleOnChange}
+          handleOnSubmit={this.handleOnSubmit}
+        />
       </div>
     )
+  }
+
+  handleOnChange = (event, key) => {
+    console.log([key])
+    console.log(event.target.value)
+    this.setState({ [key]: event.target.value })
+  }
+
+  handleOnSubmit = event => {
+    event.preventDefault()
+    console.log(this.state)
   }
 }
 
 const mapStateToProps = state => {
-  return {
-    monsters: state.monsters,
-  }
+  return {}
 }
 
 const mapDispatchToProps = dispatch => {
-  return {
-    loadMonsters: () => {
-      dispatch(loadMonsters())
-    },
-  }
+  return {}
 }
 
 export default connect(
