@@ -17,19 +17,23 @@ const CreateMonster = ({
   handleOnChangeParams,
   handleOnSubmit,
 }) => {
-  const param_components = Object.entries(params).map(([key, value]) => {
-    return (
-      <Col key={key} xs={{ span: 8, offset: 2 }}>
-        <Range
-          key={key}
-          label={key}
-          value={value}
-          {...range_default_params}
-          handleOnChange={event => handleOnChangeParams(event, key)}
-        />
-      </Col>
-    )
-  })
+  const param_components = Object.entries(params)
+    .filter(([key, value]) => {
+      return key !== "name" && key !== "description"
+    })
+    .map(([key, value]) => {
+      return (
+        <Col key={key} xs={{ span: 8, offset: 2 }}>
+          <Range
+            key={key}
+            label={key}
+            value={value}
+            {...range_default_params}
+            handleOnChange={event => handleOnChangeParams(event, key)}
+          />
+        </Col>
+      )
+    })
 
   return (
     <Container>
@@ -43,6 +47,7 @@ const CreateMonster = ({
                 <FormControl
                   type="text"
                   required={true}
+                  value={params["name"]}
                   onChange={event => handleOnChange(event, "name")}
                 />
               </FormGroup>
@@ -50,6 +55,8 @@ const CreateMonster = ({
                 <FormLabel>とくちょう</FormLabel>
                 <FormControl
                   as="textarea"
+                  required={true}
+                  value={params["description"]}
                   onChange={event => handleOnChange(event, "description")}
                   cols="40"
                   rows="5"

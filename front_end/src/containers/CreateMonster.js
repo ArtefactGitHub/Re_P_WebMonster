@@ -1,15 +1,18 @@
 import React from "react"
 import { connect } from "react-redux"
-
+import axios from "axios"
 import CreateMonsterPresenter from "../components/CreateMonster"
+import Settings from "../config/application"
 
 const initial_params = {
-  たいりょく: 10,
-  わざ: 10,
-  こうげき: 10,
-  ぼうぎょ: 10,
-  すばやさ: 10,
-  かしこさ: 10,
+  name: "",
+  description: "",
+  hp: 10,
+  wp: 10,
+  attack: 10,
+  defense: 10,
+  speed: 10,
+  intelligence: 10,
 }
 const range_default_params = {
   min: 5,
@@ -20,9 +23,7 @@ class CreateMonster extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: "",
-      description: "",
-      params: initial_params,
+      ...initial_params,
     }
   }
 
@@ -30,7 +31,7 @@ class CreateMonster extends React.Component {
     return (
       <div>
         <CreateMonsterPresenter
-          params={this.state.params}
+          params={this.state}
           range_default_params={range_default_params}
           handleOnChange={this.handleOnChange}
           handleOnChangeParams={this.handleOnChangeParams}
@@ -48,16 +49,24 @@ class CreateMonster extends React.Component {
 
   handleOnChangeParams = (event, key) => {
     this.setState({
-      params: {
-        ...this.state.params,
-        [key]: event.target.value,
-      },
+      ...this.state,
+      [key]: event.target.value,
     })
   }
 
   handleOnSubmit = event => {
     event.preventDefault()
-    console.log(this.state)
+
+    axios
+      .post(`${Settings.API_URL}/monsters`, this.state)
+      .then(res => {
+        // dispatch({ type: "LOAD_TODO", payload: { todos: res.data } })
+        console.log("success", res)
+        this.setState(initial_params)
+      })
+      .catch(data => {
+        console.log("failure", data)
+      })
   }
 }
 
