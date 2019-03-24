@@ -1,35 +1,69 @@
 import React from "react"
-import { Form, FormLabel, FormGroup, FormControl } from "react-bootstrap"
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  FormLabel,
+  FormGroup,
+  FormControl,
+} from "react-bootstrap"
+import Range from "./form/Range"
 
-const CreateMonster = ({ handleOnChange, handleOnSubmit }) => {
+const CreateMonster = ({
+  params,
+  range_default_params,
+  handleOnChange,
+  handleOnChangeParams,
+  handleOnSubmit,
+}) => {
+  const param_components = Object.entries(params).map(([key, value]) => {
+    return (
+      <Col key={key} xs={{ span: 8, offset: 2 }}>
+        <Range
+          key={key}
+          label={key}
+          value={value}
+          {...range_default_params}
+          handleOnChange={event => handleOnChangeParams(event, key)}
+        />
+      </Col>
+    )
+  })
+
   return (
-    <div>
-      <h2>Monster List</h2>
-      <div>
-        <Form onSubmit={handleOnSubmit}>
-          <FormGroup controlId="name">
-            <FormLabel>なまえ</FormLabel>
-            <FormControl
-              type="text"
-              required={true}
-              onChange={event => handleOnChange(event, "name")}
-            />
-          </FormGroup>
+    <Container>
+      <Row>
+        <Col>
+          <h2>Monster List</h2>
+          <Form onSubmit={handleOnSubmit}>
+            <Col xs={{ span: 8, offset: 2 }}>
+              <FormGroup controlId="name">
+                <FormLabel>なまえ</FormLabel>
+                <FormControl
+                  type="text"
+                  required={true}
+                  onChange={event => handleOnChange(event, "name")}
+                />
+              </FormGroup>
+              <FormGroup controlId="description">
+                <FormLabel>とくちょう</FormLabel>
+                <FormControl
+                  as="textarea"
+                  onChange={event => handleOnChange(event, "description")}
+                  cols="40"
+                  rows="5"
+                />
+              </FormGroup>
+            </Col>
 
-          <FormGroup controlId="description">
-            <FormLabel>とくちょう</FormLabel>
-            <FormControl
-              type="textarea"
-              onChange={event => handleOnChange(event, "description")}
-              cols="40"
-              rows="5"
-            />
-          </FormGroup>
+            {param_components}
 
-          <input type="submit" value="Add" className="btn btn-primary" />
-        </Form>
-      </div>
-    </div>
+            <input type="submit" value="作成" className="btn btn-primary" />
+          </Form>
+        </Col>
+      </Row>
+    </Container>
   )
 }
 
