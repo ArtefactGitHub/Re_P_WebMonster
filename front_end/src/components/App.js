@@ -9,17 +9,20 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <ul>
-          <li>
-            <Link to="/">モンスター一覧</Link>
-          </li>
-          <li>
-            <Link to="/about">About</Link>
-          </li>
-          <li>
-            <Link to="/monster">モンスター作成</Link>
-          </li>
-        </ul>
+        <div className="header">
+          <ul>
+            <li>
+              <Link to="/">モンスター一覧</Link>
+            </li>
+            <li>
+              <Link to="/about">About</Link>
+            </li>
+            <li>
+              <Link to="/monster">モンスター作成</Link>
+            </li>
+          </ul>
+        </div>
+
         <Switch>
           <Route exact path="/" component={MonsterList} />
           <Route exact path="/about" component={About} />
