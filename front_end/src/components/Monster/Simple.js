@@ -1,13 +1,16 @@
 import React from "react"
+import { Card } from "react-bootstrap"
 
 const MonsterSimple = ({ monster }) => {
   return (
-    <div>
-      <div>ばんごう： #{monster.id}</div>
-      <div>なまえ：{monster.name}</div>
-      <div>とくちょう：{monster.description}</div>
-      <button onClick={event => console.log("click")}>button</button>
-    </div>
+    <Card className="monster-card">
+      <Card.Body>
+        <Card.Title>{monster.name}</Card.Title>
+        <Card.Text>ばんごう： #{monster.id}</Card.Text>
+        <Card.Text>とくちょう：{monster.description}</Card.Text>
+        <button onClick={event => console.log("click")}>button</button>
+      </Card.Body>
+    </Card>
   )
 }
 
