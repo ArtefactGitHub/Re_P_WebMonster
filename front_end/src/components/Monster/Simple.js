@@ -1,5 +1,6 @@
 import React from "react"
 import { Row, Col, Card } from "react-bootstrap"
+import MonsterImage from "./MonsterImage"
 
 const MonsterSimple = ({ monster }) => {
   return (
@@ -8,13 +9,8 @@ const MonsterSimple = ({ monster }) => {
         <Card.Title className="title">
           #{monster.id} {monster.name}
         </Card.Title>
-        <div className="image-frame">
-          <Card.Img
-            variant="top"
-            src="images/monster_sample.png"
-            className="image"
-          />
-        </div>
+
+        <MonsterImage image={monster.image} />
 
         <Row>
           <Col xs={{ span: 4, offset: 2 }}>
