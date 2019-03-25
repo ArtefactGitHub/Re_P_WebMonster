@@ -5,7 +5,12 @@ import { MonsterSimple } from "./Monster"
 const MonsterList = ({ monsters }) => {
   const list = monsters.map(monster => {
     return (
-      <Col xs={12} md={{ span: 6, offset: 0 }} key={monster.id}>
+      <Col
+        xs={12}
+        md={{ span: 6, offset: 0 }}
+        lg={{ span: 4, offset: 0 }}
+        key={monster.id}
+      >
         <MonsterSimple monster={monster} />
       </Col>
     )
