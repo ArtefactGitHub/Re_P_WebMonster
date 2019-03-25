@@ -9,5 +9,6 @@ export const CREATE_MONSTER_PARAMS_INITIAL_STATE = {
 export const CREATE_MONSTER_INITIAL_STATE = {
   name: "",
   description: "",
+  image: null,
   ...CREATE_MONSTER_PARAMS_INITIAL_STATE,
 }
