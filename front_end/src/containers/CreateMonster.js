@@ -1,37 +1,20 @@
 import React from "react"
 import { connect } from "react-redux"
-import axios from "axios"
 import CreateMonsterPresenter from "../components/CreateMonster"
-import Settings from "../config/application"
+import { updateParams, createMonster } from "../actions/CreateMonster"
 
-const initial_params = {
-  name: "",
-  description: "",
-  hp: 10,
-  wp: 10,
-  attack: 10,
-  defense: 10,
-  speed: 10,
-  intelligence: 10,
-}
 const range_default_params = {
   min: 5,
   max: 20,
 }
 
 class CreateMonster extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      ...initial_params,
-    }
-  }
-
   render() {
+    const { monster } = this.props
     return (
       <div>
         <CreateMonsterPresenter
-          params={this.state}
+          params={monster}
           range_default_params={range_default_params}
           handleOnChange={this.handleOnChange}
           handleOnChangeParams={this.handleOnChangeParams}
@@ -42,40 +25,30 @@ class CreateMonster extends React.Component {
   }
 
   handleOnChange = (event, key) => {
-    this.setState({
-      [key]: event.target.value,
-    })
+    this.props.updateParams(key, event.target.value)
   }
 
   handleOnChangeParams = (event, key) => {
-    this.setState({
-      ...this.state,
-      [key]: event.target.value,
-    })
+    this.props.updateParams(key, event.target.value)
   }
 
   handleOnSubmit = event => {
     event.preventDefault()
-
-    axios
-      .post(`${Settings.API_URL}/monsters`, this.state)
-      .then(res => {
-        // dispatch({ type: "LOAD_TODO", payload: { todos: res.data } })
-        console.log("success", res)
-        this.setState(initial_params)
-      })
-      .catch(data => {
-        console.log("failure", data)
-      })
+    this.props.createMonster(this.props.monster)
   }
 }
 
 const mapStateToProps = state => {
-  return {}
+  return {
+    monster: state.create_monster,
+  }
 }
 
 const mapDispatchToProps = dispatch => {
-  return {}
+  return {
+    updateParams: (key, value) => dispatch(updateParams(key, value)),
+    createMonster: monster => dispatch(createMonster(monster)),
+  }
 }
 
 export default connect(
