@@ -20,7 +20,7 @@ const MonsterSimple = ({ monster }) => {
           <Col xs={{ span: 4, offset: 2 }}>
             <div className="param">
               <img
-                src="images/card_frames/icon_0.png"
+                src="images/icons/icon_0.png"
                 alt="icon_0"
                 className="icon"
               />
@@ -30,7 +30,7 @@ const MonsterSimple = ({ monster }) => {
           <Col xs={{ span: 4, offset: 0 }}>
             <div className="param">
               <img
-                src="images/card_frames/icon_1.png"
+                src="images/icons/icon_1.png"
                 alt="icon_1"
                 className="icon"
               />
@@ -40,7 +40,7 @@ const MonsterSimple = ({ monster }) => {
           <Col xs={{ span: 4, offset: 2 }}>
             <div className="param">
               <img
-                src="images/card_frames/icon_2.png"
+                src="images/icons/icon_2.png"
                 alt="icon_2"
                 className="icon"
               />
@@ -50,7 +50,7 @@ const MonsterSimple = ({ monster }) => {
           <Col xs={{ span: 4, offset: 0 }}>
             <div className="param">
               <img
-                src="images/card_frames/icon_3.png"
+                src="images/icons/icon_3.png"
                 alt="icon_3"
                 className="icon"
               />
@@ -60,7 +60,7 @@ const MonsterSimple = ({ monster }) => {
           <Col xs={{ span: 4, offset: 2 }}>
             <div className="param">
               <img
-                src="images/card_frames/icon_4.png"
+                src="images/icons/icon_4.png"
                 alt="icon_4"
                 className="icon"
               />
@@ -70,7 +70,7 @@ const MonsterSimple = ({ monster }) => {
           <Col xs={{ span: 4, offset: 0 }}>
             <div className="param">
               <img
-                src="images/card_frames/icon_5.png"
+                src="images/icons/icon_5.png"
                 alt="icon_5"
                 className="icon"
               />
