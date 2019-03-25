@@ -31,6 +31,11 @@ gem 'rack-cors'
 # ローカライズ
 gem 'rails-i18n'
 
+# file upload
+gem 'carrierwave'
+gem 'fog-aws'
+gem 'rmagick'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
