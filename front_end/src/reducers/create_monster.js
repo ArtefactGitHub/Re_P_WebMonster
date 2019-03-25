@@ -1,14 +1,6 @@
-const initial_state = {
-  name: "",
-  description: "",
-  hp: 10,
-  wp: 10,
-  attack: 10,
-  defense: 10,
-  speed: 10,
-  intelligence: 10,
-}
+import { CREATE_MONSTER_INITIAL_STATE } from "../constants"
 
+const initial_state = CREATE_MONSTER_INITIAL_STATE
 const createMonsterReducer = (state = initial_state, action) => {
   switch (action.type) {
     case "CREATE_MONSTER":

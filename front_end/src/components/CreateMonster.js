@@ -9,6 +9,7 @@ import {
   FormControl,
 } from "react-bootstrap"
 import Range from "./form/Range"
+import { CREATE_MONSTER_PARAMS_INITIAL_STATE } from "../constants"
 
 const CreateMonster = ({
   params,
@@ -17,23 +18,21 @@ const CreateMonster = ({
   handleOnChangeParams,
   handleOnSubmit,
 }) => {
-  const param_components = Object.entries(params)
-    .filter(([key, value]) => {
-      return key !== "name" && key !== "description"
-    })
-    .map(([key, value]) => {
+  const range_components = Object.keys(CREATE_MONSTER_PARAMS_INITIAL_STATE).map(
+    key => {
       return (
         <Col key={key} xs={{ span: 8, offset: 2 }}>
           <Range
             key={key}
             label={key}
-            value={value}
+            value={params[key]}
             {...range_default_params}
             handleOnChange={event => handleOnChangeParams(event, key)}
           />
         </Col>
       )
-    })
+    }
+  )
 
   return (
     <Container>
@@ -64,7 +63,7 @@ const CreateMonster = ({
               </FormGroup>
             </Col>
 
-            {param_components}
+            {range_components}
 
             <input type="submit" value="作成" className="btn btn-primary" />
           </Form>
