@@ -14,6 +14,7 @@ import { CREATE_MONSTER_PARAMS_INITIAL_STATE } from "../constants"
 
 const CreateMonster = ({
   params,
+  isSubmitting,
   range_default_params,
   handleOnChange,
   handleOnChangeParams,
@@ -77,7 +78,12 @@ const CreateMonster = ({
 
             {range_components}
 
-            <input type="submit" value="作成" className="btn btn-primary" />
+            <input
+              type="submit"
+              value="作成"
+              className="btn btn-primary"
+              disabled={isSubmitting}
+            />
           </Form>
         </Col>
       </Row>

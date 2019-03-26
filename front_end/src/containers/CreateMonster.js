@@ -10,11 +10,12 @@ const range_default_params = {
 
 class CreateMonster extends React.Component {
   render() {
-    const { monster } = this.props
+    const { monster, isSubmitting } = this.props
     return (
       <div>
         <CreateMonsterPresenter
           params={monster}
+          isSubmitting={isSubmitting}
           range_default_params={range_default_params}
           handleOnChange={this.handleOnChange}
           handleOnChangeParams={this.handleOnChangeParams}
@@ -51,6 +52,7 @@ class CreateMonster extends React.Component {
 const mapStateToProps = state => {
   return {
     monster: state.create_monster,
+    isSubmitting: state.createMonsterIsSubmitting,
   }
 }
 
