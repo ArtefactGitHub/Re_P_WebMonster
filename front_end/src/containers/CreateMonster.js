@@ -10,18 +10,24 @@ const range_default_params = {
 
 class CreateMonster extends React.Component {
   render() {
-    const { monster } = this.props
+    const { monster, isSubmitting } = this.props
     return (
       <div>
         <CreateMonsterPresenter
           params={monster}
+          isSubmitting={isSubmitting}
           range_default_params={range_default_params}
           handleOnChange={this.handleOnChange}
           handleOnChangeParams={this.handleOnChangeParams}
+          handleOnChangeImage={this.handleOnChangeImage}
           handleOnSubmit={this.handleOnSubmit}
         />
       </div>
     )
+  }
+
+  handleOnChangeImage = event => {
+    this.props.updateParams("image", event.target.files[0])
   }
 
   handleOnChange = (event, key) => {
@@ -34,13 +40,19 @@ class CreateMonster extends React.Component {
 
   handleOnSubmit = event => {
     event.preventDefault()
-    this.props.createMonster(this.props.monster)
+
+    const formData = new FormData()
+    Object.entries(this.props.monster).map(([key, value]) =>
+      formData.append([key], value)
+    )
+    this.props.createMonster(formData)
   }
 }
 
 const mapStateToProps = state => {
   return {
     monster: state.create_monster,
+    isSubmitting: state.createMonsterIsSubmitting,
   }
 }
 

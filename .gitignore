@@ -30,3 +30,6 @@ node_modules/
 
 # Ignore front_end .env
 front_end/.env*
+
+# Ignore upload files
+public/uploads/*

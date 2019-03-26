@@ -9,13 +9,16 @@ import {
   FormControl,
 } from "react-bootstrap"
 import Range from "./form/Range"
+import MonsterImagePreview from "./Monster/MonsterImagePreview"
 import { CREATE_MONSTER_PARAMS_INITIAL_STATE } from "../constants"
 
 const CreateMonster = ({
   params,
+  isSubmitting,
   range_default_params,
   handleOnChange,
   handleOnChangeParams,
+  handleOnChangeImage,
   handleOnSubmit,
 }) => {
   const range_components = Object.keys(CREATE_MONSTER_PARAMS_INITIAL_STATE).map(
@@ -34,6 +37,7 @@ const CreateMonster = ({
     }
   )
 
+  const { image, name, description } = params
   return (
     <Container>
       <Row>
@@ -41,12 +45,21 @@ const CreateMonster = ({
           <h2>Monster List</h2>
           <Form onSubmit={handleOnSubmit}>
             <Col xs={{ span: 8, offset: 2 }}>
+              <MonsterImagePreview image={image} />
+              <FormGroup controlId="image">
+                <FormControl
+                  type="file"
+                  required={false}
+                  onChange={event => handleOnChangeImage(event)}
+                />
+              </FormGroup>
+
               <FormGroup controlId="name">
                 <FormLabel>なまえ</FormLabel>
                 <FormControl
                   type="text"
                   required={true}
-                  value={params["name"]}
+                  value={name}
                   onChange={event => handleOnChange(event, "name")}
                 />
               </FormGroup>
@@ -55,7 +68,7 @@ const CreateMonster = ({
                 <FormControl
                   as="textarea"
                   required={true}
-                  value={params["description"]}
+                  value={description}
                   onChange={event => handleOnChange(event, "description")}
                   cols="40"
                   rows="5"
@@ -65,7 +78,12 @@ const CreateMonster = ({
 
             {range_components}
 
-            <input type="submit" value="作成" className="btn btn-primary" />
+            <input
+              type="submit"
+              value={isSubmitting ? "通信中..." : "作成"}
+              className="btn btn-primary"
+              disabled={isSubmitting}
+            />
           </Form>
         </Col>
       </Row>

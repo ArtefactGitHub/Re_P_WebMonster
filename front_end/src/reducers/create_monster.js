@@ -17,4 +17,16 @@ const createMonsterReducer = (state = initial_state, action) => {
   }
 }
 
-export default createMonsterReducer
+const createMonsterIsSubmittingReducer = (state = false, action) => {
+  switch (action.type) {
+    case "SUBMIT_START":
+      return true
+    case "SUBMIT_END":
+      return false
+
+    default:
+      return state
+  }
+}
+
+export { createMonsterReducer, createMonsterIsSubmittingReducer }

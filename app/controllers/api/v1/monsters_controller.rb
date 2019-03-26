@@ -17,7 +17,8 @@ module Api
       private
 
       def monsters_params
-        params.require(:monster).permit(:name, :description, :hp, :wp, :attack, :defense, :speed, :intelligence)
+        params.permit(:name, :description, :hp, :wp, :attack, :defense, :speed, :intelligence, :image)
+        # params.require(:monster).permit(:image, :name, :description, :hp, :wp, :attack, :defense, :speed, :intelligence)
       end
     end
   end
