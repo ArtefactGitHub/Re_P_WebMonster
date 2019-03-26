@@ -18,35 +18,36 @@ $IMAGE_BACKGROUND: #e8e8e8;
   }
 }
 
+.monster-image {
+  .image-frame {
+    width: $MAX_IMAGE_SIZE;
+    height: $MAX_IMAGE_SIZE;
+    margin: auto;
+    border-radius: 0.25rem;
+    background: $IMAGE_BACKGROUND;
+  }
+  .image {
+    width: auto;
+    height: auto;
+    max-width: $MAX_IMAGE_SIZE;
+    max-height: $MAX_IMAGE_SIZE;
+    margin: auto;
+  }
+}
+
 .MonsterList {
   text-align: center;
+}
 
-  .monster-list {
+.monster-card-simple {
+  margin: 0 auto 20px;
+  box-shadow: 0 3px 12px #000;
+
+  .title {
+    font-weight: bold;
   }
-  .monster-card-simple {
-    margin: 0 auto 20px;
-    box-shadow: 0 3px 12px #000;
-
-    .title {
-      font-weight: bold;
-    }
-    .icon {
-      width: $MAX_ICON_SIZE;
-      height: $MAX_ICON_SIZE;
-    }
-    .image-frame {
-      width: $MAX_IMAGE_SIZE;
-      height: $MAX_IMAGE_SIZE;
-      margin: auto;
-      border-radius: 0.25rem;
-      background: $IMAGE_BACKGROUND;
-    }
-    .image {
-      width: auto;
-      height: auto;
-      max-width: $MAX_IMAGE_SIZE;
-      max-height: $MAX_IMAGE_SIZE;
-      margin: auto;
-    }
+  .icon {
+    width: $MAX_ICON_SIZE;
+    height: $MAX_ICON_SIZE;
   }
 }
