@@ -6,7 +6,7 @@ const MonsterImage = ({ image }) => {
   let src =
     image === null || image.url === null
       ? "images/monster_sample.png"
-      : `${Settings.HOST_URL}${image.url}`
+      : Settings.ImageUrl(image.url)
   return (
     <div className="monster-image">
       <div className="image-frame">

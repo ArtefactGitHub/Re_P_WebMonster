@@ -1,12 +1,10 @@
 import React from "react"
 import { Card } from "react-bootstrap"
+import Settings from "../../config/application"
 
 const MonsterImagePreview = ({ image }) => {
-  var createObjectURL =
-    (window.URL || window.webkitURL).createObjectURL || window.createObjectURL
-
   const src =
-    image == null ? "images/monster_sample.png" : createObjectURL(image)
+    image == null ? "images/monster_sample.png" : Settings.ImageUrlLocal(image)
 
   return (
     <div className="monster-image">
