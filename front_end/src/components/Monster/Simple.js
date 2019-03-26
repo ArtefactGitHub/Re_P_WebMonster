@@ -5,8 +5,11 @@ import MonsterParameter from "./MonsterParameter"
 import { CREATE_MONSTER_PARAMS_INITIAL_STATE } from "../../constants"
 
 const MonsterSimple = ({ monster }) => {
-  const param_layouts = Object.entries(CREATE_MONSTER_PARAMS_INITIAL_STATE).map(
-    ([key, value], index) => {
+  const param_layouts = Object.entries(monster)
+    .filter(([key, value]) => {
+      return key in CREATE_MONSTER_PARAMS_INITIAL_STATE
+    })
+    .map(([key, value], index) => {
       const offset = index % 2 ? 0 : 2
       return (
         <Col xs={{ span: 4, offset: offset }} key={`${monster.id}-${index}`}>
@@ -17,8 +20,7 @@ const MonsterSimple = ({ monster }) => {
           />
         </Col>
       )
-    }
-  )
+    })
 
   return (
     <Card className="monster-card-simple">
