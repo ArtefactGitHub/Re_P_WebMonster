@@ -9,6 +9,7 @@ import {
   FormControl,
 } from "react-bootstrap"
 import Range from "./form/Range"
+import MonsterImagePreview from "./Monster/MonsterImagePreview"
 import { CREATE_MONSTER_PARAMS_INITIAL_STATE } from "../constants"
 
 const CreateMonster = ({
@@ -16,6 +17,7 @@ const CreateMonster = ({
   range_default_params,
   handleOnChange,
   handleOnChangeParams,
+  handleOnChangeImage,
   handleOnSubmit,
 }) => {
   const range_components = Object.keys(CREATE_MONSTER_PARAMS_INITIAL_STATE).map(
@@ -34,6 +36,7 @@ const CreateMonster = ({
     }
   )
 
+  const { image, name, description } = params
   return (
     <Container>
       <Row>
@@ -41,12 +44,21 @@ const CreateMonster = ({
           <h2>Monster List</h2>
           <Form onSubmit={handleOnSubmit}>
             <Col xs={{ span: 8, offset: 2 }}>
+              <MonsterImagePreview image={image} />
+              <FormGroup controlId="image">
+                <FormControl
+                  type="file"
+                  required={false}
+                  onChange={event => handleOnChangeImage(event)}
+                />
+              </FormGroup>
+
               <FormGroup controlId="name">
                 <FormLabel>なまえ</FormLabel>
                 <FormControl
                   type="text"
                   required={true}
-                  value={params["name"]}
+                  value={name}
                   onChange={event => handleOnChange(event, "name")}
                 />
               </FormGroup>
@@ -55,7 +67,7 @@ const CreateMonster = ({
                 <FormControl
                   as="textarea"
                   required={true}
-                  value={params["description"]}
+                  value={description}
                   onChange={event => handleOnChange(event, "description")}
                   cols="40"
                   rows="5"
