@@ -1,8 +1,25 @@
 import React from "react"
 import { Row, Col, Card } from "react-bootstrap"
 import MonsterImage from "./MonsterImage"
+import MonsterParameter from "./MonsterParameter"
+import { CREATE_MONSTER_PARAMS_INITIAL_STATE } from "../../constants"
 
 const MonsterSimple = ({ monster }) => {
+  const param_layouts = Object.entries(CREATE_MONSTER_PARAMS_INITIAL_STATE).map(
+    ([key, value], index) => {
+      const offset = index % 2 ? 0 : 2
+      return (
+        <Col xs={{ span: 4, offset: offset }} key={`${monster.id}-${index}`}>
+          <MonsterParameter
+            src={`images/icons/icon_${index}.png`}
+            alt={`icon_${index}`}
+            value={value}
+          />
+        </Col>
+      )
+    }
+  )
+
   return (
     <Card className="monster-card-simple">
       <Card.Body>
@@ -12,68 +29,7 @@ const MonsterSimple = ({ monster }) => {
 
         <MonsterImage image={monster.image} />
 
-        <Row>
-          <Col xs={{ span: 4, offset: 2 }}>
-            <div className="param">
-              <img
-                src="images/icons/icon_0.png"
-                alt="icon_0"
-                className="icon"
-              />
-              {monster.hp}
-            </div>
-          </Col>
-          <Col xs={{ span: 4, offset: 0 }}>
-            <div className="param">
-              <img
-                src="images/icons/icon_1.png"
-                alt="icon_1"
-                className="icon"
-              />
-              {monster.wp}
-            </div>
-          </Col>
-          <Col xs={{ span: 4, offset: 2 }}>
-            <div className="param">
-              <img
-                src="images/icons/icon_2.png"
-                alt="icon_2"
-                className="icon"
-              />
-              {monster.attack}
-            </div>
-          </Col>
-          <Col xs={{ span: 4, offset: 0 }}>
-            <div className="param">
-              <img
-                src="images/icons/icon_3.png"
-                alt="icon_3"
-                className="icon"
-              />
-              {monster.defense}
-            </div>
-          </Col>
-          <Col xs={{ span: 4, offset: 2 }}>
-            <div className="param">
-              <img
-                src="images/icons/icon_4.png"
-                alt="icon_4"
-                className="icon"
-              />
-              {monster.speed}
-            </div>
-          </Col>
-          <Col xs={{ span: 4, offset: 0 }}>
-            <div className="param">
-              <img
-                src="images/icons/icon_5.png"
-                alt="icon_5"
-                className="icon"
-              />
-              {monster.intelligence}
-            </div>
-          </Col>
-        </Row>
+        <Row>{param_layouts}</Row>
       </Card.Body>
     </Card>
   )
