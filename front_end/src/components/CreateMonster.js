@@ -80,7 +80,7 @@ const CreateMonster = ({
 
             <input
               type="submit"
-              value="作成"
+              value={isSubmitting ? "通信中..." : "作成"}
               className="btn btn-primary"
               disabled={isSubmitting}
             />
