@@ -4,7 +4,9 @@ import Settings from "../../config/application"
 
 const MonsterImage = ({ image }) => {
   let src =
-    image === null ? "images/monster_sample.png" : Settings.ImageUrl(image)
+    image === null || image.url === null
+      ? Settings.PublicImageUrl("monster_sample.png")
+      : Settings.ImageUrl(image)
   return (
     <div className="monster-image">
       <div className="image-frame">

@@ -8,6 +8,11 @@ class ApplicationSettings {
     else return `${ApplicationSettings.HOST_URL}${image.thumb.url}`
   }
 
+  static PublicImageUrl = imagePath => {
+    if (imagePath == null) return ""
+    return `images/${imagePath}`
+  }
+
   static ImageUrlLocal = imageUrl =>
     ApplicationSettings.createObjectURL(imageUrl)
 
