@@ -1,6 +1,7 @@
 class ApplicationSettings {
   static HOST_URL = process.env.REACT_APP_BACKEND_URL
   static API_URL = process.env.REACT_APP_BACKEND_API_URL
+  static AUTH_URL = process.env.REACT_APP_BACKEND_AUTH_URL
 
   static ImageUrl = image => {
     if (image == null || image.thumb == null) return ""
