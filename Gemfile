@@ -28,13 +28,17 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 gem 'rack-cors'
 
-# ローカライズ
+# locale
 gem 'rails-i18n'
+gem 'devise-i18n'
 
 # file upload
 gem 'carrierwave'
 gem 'fog-aws'
 gem 'rmagick'
+
+gem 'devise'
+gem 'devise_token_auth'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
