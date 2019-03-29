@@ -6,6 +6,11 @@ import RegisterUser from "../components/RegisterUser"
 import LoginUser from "../components/LoginUser"
 import MonsterList from "../containers/MonsterList"
 import CreateMonster from "../containers/CreateMonster"
+import generateRequireSignInWrapper from "../containers/redux-token-auth/generateRequireSignInWrapper"
+
+const requireSignIn = generateRequireSignInWrapper({
+  redirectPathIfNotSignedIn: "/signin",
+})
 
 const App = () => {
   return (
@@ -36,7 +41,11 @@ const App = () => {
           <Route exact path="/signUp" component={RegisterUser} />
           <Route exact path="/signIn" component={LoginUser} />
           <Route exact path="/about" component={About} />
-          <Route exact path="/monster" component={CreateMonster} />
+          <Route
+            exact
+            path="/monster"
+            component={requireSignIn(CreateMonster)}
+          />
         </Switch>
       </div>
     </Router>
