@@ -86,12 +86,13 @@ class LoginUser extends React.Component {
 
   handleOnSubmit = event => {
     event.preventDefault()
-    const { signInUser } = this.props
+    const { signInUser, history } = this.props
     const { email, password } = this.state
     signInUser({ email, password })
       .then(res => {
         console.log("success signInUser", res)
         this.setState(initial_state)
+        history.replace("/mypage")
       })
       .catch(error => {
         console.log("failure signInUser", error.response)
