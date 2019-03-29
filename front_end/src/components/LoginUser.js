@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { signInUser, signOutUser } from "../redux-token-auth-config"
+import { signInUser } from "../redux-token-auth-config"
 import {
   Container,
   Row,
@@ -9,7 +9,6 @@ import {
   FormLabel,
   FormGroup,
   FormControl,
-  Button,
 } from "react-bootstrap"
 
 const initial_state = {
@@ -58,26 +57,11 @@ class LoginUser extends React.Component {
                 className="btn btn-primary"
                 disabled={isSubmitting}
               />
-
-              <Button onClick={this.handleOnClick}>ログアウト</Button>
             </Form>
           </Col>
         </Row>
       </Container>
     )
-  }
-
-  handleOnClick = event => {
-    const { signOutUser } = this.props
-    signOutUser()
-      .then(res => {
-        console.log("success signOutUser", res)
-        this.setState(initial_state)
-      })
-      .catch(error => {
-        console.log("failure signOutUser", error.response)
-        this.setState(initial_state)
-      })
   }
 
   handleOnChange = (event, key) => {
@@ -103,5 +87,5 @@ class LoginUser extends React.Component {
 
 export default connect(
   null,
-  { signInUser, signOutUser }
+  { signInUser }
 )(LoginUser)
