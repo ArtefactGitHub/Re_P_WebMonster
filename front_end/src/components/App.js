@@ -21,19 +21,25 @@ const App = () => {
       <div className="App">
         <Header />
 
-        <Switch>
-          <Route exact path="/" component={MonsterList} />
-          <Route exact path="/about" component={About} />
-          <Route exact path="/signUp" component={RegisterUser} />
-          <Route exact path="/signIn" component={LoginUser} />
-          <Route exact path="/signOut" component={requireSignIn(LogoutUser)} />
-          <Route exact path="/mypage" component={requireSignIn(Mypage)} />
-          <Route
-            exact
-            path="/mypage/monsters/new"
-            component={requireSignIn(CreateMonster)}
-          />
-        </Switch>
+        <div className="main">
+          <Switch>
+            <Route exact path="/" component={MonsterList} />
+            <Route exact path="/about" component={About} />
+            <Route exact path="/signUp" component={RegisterUser} />
+            <Route exact path="/signIn" component={LoginUser} />
+            <Route
+              exact
+              path="/signOut"
+              component={requireSignIn(LogoutUser)}
+            />
+            <Route exact path="/mypage" component={requireSignIn(Mypage)} />
+            <Route
+              exact
+              path="/mypage/monsters/new"
+              component={requireSignIn(CreateMonster)}
+            />
+          </Switch>
+        </div>
       </div>
     </Router>
   )
