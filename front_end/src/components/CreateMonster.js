@@ -42,7 +42,7 @@ const CreateMonster = ({
     <Container>
       <Row>
         <Col>
-          <h2>Monster List</h2>
+          <h2>モンスター作成</h2>
           <Form onSubmit={handleOnSubmit}>
             <Col xs={{ span: 8, offset: 2 }}>
               <MonsterImagePreview image={image} />
