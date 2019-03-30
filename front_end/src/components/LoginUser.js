@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import { signInUser } from "../redux-token-auth-config"
+import { Link } from "react-router-dom"
 import {
   Container,
   Row,
@@ -25,42 +26,48 @@ class LoginUser extends React.Component {
     const { email, password, isSubmitting } = this.state
     const { handleOnChange, handleOnSubmit } = this
     return (
-      <Container>
-        <Row>
-          <Col>
-            <h2>ログイン</h2>
-            <Form onSubmit={handleOnSubmit}>
+      <div className="login-user">
+        <Container>
+          <Row>
+            <Col>
+              <h2>ログイン</h2>
               <Col xs={{ span: 8, offset: 2 }}>
-                <FormGroup controlId="email">
-                  <FormLabel>メールアドレス</FormLabel>
-                  <FormControl
-                    type="text"
-                    required={true}
-                    value={email}
-                    onChange={event => handleOnChange(event, "email")}
-                  />
-                </FormGroup>
-                <FormGroup controlId="password">
-                  <FormLabel>パスワード</FormLabel>
-                  <FormControl
-                    type="password"
-                    required={true}
-                    value={password}
-                    onChange={event => handleOnChange(event, "password")}
-                  />
-                </FormGroup>
-              </Col>
+                <Form onSubmit={handleOnSubmit}>
+                  <FormGroup controlId="email">
+                    <FormLabel>メールアドレス</FormLabel>
+                    <FormControl
+                      type="text"
+                      required={true}
+                      value={email}
+                      onChange={event => handleOnChange(event, "email")}
+                    />
+                  </FormGroup>
+                  <FormGroup controlId="password">
+                    <FormLabel>パスワード</FormLabel>
+                    <FormControl
+                      type="password"
+                      required={true}
+                      value={password}
+                      onChange={event => handleOnChange(event, "password")}
+                    />
+                  </FormGroup>
 
-              <input
-                type="submit"
-                value={isSubmitting ? "通信中..." : "ログイン"}
-                className="btn btn-primary"
-                disabled={isSubmitting}
-              />
-            </Form>
-          </Col>
-        </Row>
-      </Container>
+                  <input
+                    type="submit"
+                    value={isSubmitting ? "通信中..." : "ログイン"}
+                    className="btn btn-primary"
+                    disabled={isSubmitting}
+                  />
+                </Form>
+
+                <div className="for-register">
+                  <Link to="/signUp">登録はこちら</Link>
+                </div>
+              </Col>
+            </Col>
+          </Row>
+        </Container>
+      </div>
     )
   }
 
