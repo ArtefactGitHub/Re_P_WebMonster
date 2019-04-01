@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { signInUser } from "../redux-token-auth-config"
+import { signInUser } from "../config/redux-token-auth"
 import { Link } from "react-router-dom"
 import {
   Container,

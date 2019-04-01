@@ -1,7 +1,6 @@
 import { generateAuthActions } from "redux-token-auth"
-import Settings from "./config/application"
+import Settings from "./application"
 
-// authUrl,
 const config = {
   authUrl: Settings.AUTH_URL,
   userAttributes: {
