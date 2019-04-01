@@ -29,7 +29,8 @@ vendor/bundle
 node_modules/
 
 # Ignore front_end .env
-front_end/.env*
+front_end/.env.development
+front_end/.env.production
 
 # Ignore upload files
 public/uploads/*

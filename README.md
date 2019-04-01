@@ -1,14 +1,13 @@
-# React-Redux学習のためのTodoアプリ
+# React-Redux アプリ開発の学習
 
-React-Reduxを学習するため、簡易なTodoアプリを実装しました。
+React-Redux 及び RailsAPI モードのアプリ開発の学習のためのリポジトリです（更新中）。
 
-- Reactの実装
-- Reduxの実装
-- Presentationコンポーネント、Containerコンポーネントの実装
-- ActionCreatorsの実装
-- CombineReducersの実装
-- axiosを用いた非同期通信処理の実装
-- redux-thunkを用いた非同期アクション発行の実装
+- [React](https://reactjs.org/)の実装
+- [Redux](https://redux.js.org/)の実装
+- [RailsAPI モード](https://railsguides.jp/api_app.html)の実装
+- [axios](https://github.com/axios/axios)、[redux-thunk](https://github.com/reduxjs/redux-thunk)を用いた非同期通信処理の実装
+- [react-bootstrap](https://react-bootstrap.github.io/)を用いた View の実装
+- [devise](https://github.com/plataformatec/devise)、[devise_token_auth](https://github.com/lynndylanhurley/devise_token_auth)、[redux-token-auth](https://github.com/kylecorbelli/redux-token-auth)を用いたトークン認証の SPA の実装
 
 ## Ruby version
 
@@ -20,19 +19,13 @@ React-Reduxを学習するため、簡易なTodoアプリを実装しました�
 
 ## Project initiation
 
-- リポジトリのクローン
-
-```bash
-$ git@github.com:ArtefactGitHub/Re_T_Todo.git
-```
-
-- Gemのインストール
+- Gem のインストール
 
 ```bash
 $ bundle install --path vendor/bundle
 ```
 
-- node_modulesのインストール
+- node_modules のインストール
 
 ```bash
 $ yarn install
@@ -43,22 +36,25 @@ $ yarn install
 
 ### Configuration
 
-*ファイルの中身はご自身の環境に合わせて適宜変更してください*
+_ファイルの中身はご自身の環境に合わせて適宜変更してください_
 
 - データベースの設定
 
 ```bash
+
 ```
 
 - 環境変数の設定
 
 ```bash
-# 開発用
-$ cd front_end
-$ echo REACT_APP_BACKEND_URL=http://localhost:3001/ >> .env.development
+# Rails
+$ cp .env.default .env
 
-# 本番用
-$ echo REACT_APP_BACKEND_URL=＜本番用バックエンドのURL＞/ >> .env.production
+# React 開発用
+$ cp ./front_end/.env.default ./front_end/.env.development
+
+# React 本番用
+$ cp ./front_end/.env.default ./front_end/.env.production
 ```
 
 ### Database creation
@@ -66,11 +62,6 @@ $ echo REACT_APP_BACKEND_URL=＜本番用バックエンドのURL＞/ >> .env.pr
 ```bash
 $ bundle exec rails db:create
 $ bundle exec rails db:migrate
-```
-
-### Database initialization
-
-```bash
 ```
 
 ## Run rails server
@@ -86,21 +77,34 @@ $ cd front_end
 $ yarn start
 ```
 
+## Deploy Rails Project
+
+[Heroku](https://jp.heroku.com/) を使います。
+
+#### デプロイ
+
+```bash
+$ git push heroku master
+```
+
 ## Deploy React Project
 
 [surge](https://surge.sh/) を使います。
 
 #### インストール
+
 ```bash
 $ yarn global add surge
 ```
 
 #### デプロイ
-```
+
+```bash
 # 簡易なデプロイ（デプロイ時にデプロイ先ドメインを決めます）
 $ yarn run deploy
 
 # デプロイ先ドメインを指定してデプロイ
 $ yarn run deploy --domain https://＜任意の名前＞.surge.sh
 ```
+
 初回デプロイ時にアカウント登録のため、メールアドレスとパスワードをターミナル上で入力します。
