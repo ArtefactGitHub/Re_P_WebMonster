@@ -11,6 +11,9 @@ const config = {
   userRegistrationAttributes: {
     name: "name",
   },
+  storage: {
+    flushGetRequests: false,
+  },
 }
 
 const {
