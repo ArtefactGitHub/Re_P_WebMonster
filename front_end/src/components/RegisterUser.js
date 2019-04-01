@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { registerUser } from "../redux-token-auth-config"
+import { registerUser } from "../config/redux-token-auth"
 import {
   Container,
   Row,

@@ -14,7 +14,7 @@
     "react-scripts": "2.1.8",
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
-    "redux-token-auth": "^0.19.0"
+    "redux-token-auth": "kylecorbelli/redux-token-auth"
   },
   "scripts": {
     "start": "react-scripts start",

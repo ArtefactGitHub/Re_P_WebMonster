@@ -1,6 +1,6 @@
 import React from "react"
 import { connect } from "react-redux"
-import { signOutUser } from "../redux-token-auth-config"
+import { signOutUser } from "../config/redux-token-auth"
 
 class LogoutUser extends React.Component {
   componentDidMount() {
