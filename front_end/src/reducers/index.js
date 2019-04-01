@@ -1,9 +1,16 @@
 import { combineReducers } from "redux"
+import { reduxTokenAuthReducer as reduxTokenAuth } from "redux-token-auth"
 
-import todos from "./todos"
-import addTodo from "./add_todo"
+import monsters from "./monsters"
+import {
+  createMonsterReducer as create_monster,
+  createMonsterIsSubmittingReducer as createMonsterIsSubmitting,
+} from "./create_monster"
 
 export default combineReducers({
-  todos,
-  addTodo,
+  reduxTokenAuth,
+
+  monsters,
+  create_monster,
+  createMonsterIsSubmitting,
 })

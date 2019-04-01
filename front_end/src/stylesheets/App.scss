@@ -1,5 +1,82 @@
 @import "~bootstrap/dist/css/bootstrap.min.css";
 
+$MAX_IMAGE_SIZE: 200px;
+$MAX_ICON_SIZE: 20px;
+$BODY_BACKGROUND: #f0f8ff;
+$IMAGE_BACKGROUND: #e8e8e8;
+
+body {
+  background: $BODY_BACKGROUND;
+}
+
 .App {
   text-align: center;
+
+  font-family: "ヒラギノ丸ゴ Pro W4", "ヒラギノ丸ゴ Pro",
+    "Hiragino Maru Gothic Pro", "ヒラギノ角ゴ Pro W3",
+    "Hiragino Kaku Gothic Pro", "HG丸ｺﾞｼｯｸM-PRO", "HGMaruGothicMPRO";
+}
+
+.header {
+  ul {
+    list-style: none;
+  }
+  .logo {
+    width: 5rem;
+  }
+  .link-to-login {
+    margin-left: auto;
+  }
+  .link-to-logout {
+    margin-left: auto;
+  }
+}
+
+.main {
+  margin: 2rem 0 2rem;
+}
+
+.login-user {
+  form {
+    margin: 2rem 0 2rem;
+  }
+
+  .for-register {
+    text-align: right;
+  }
+}
+
+.monster-image {
+  .image-frame {
+    width: $MAX_IMAGE_SIZE;
+    height: $MAX_IMAGE_SIZE;
+    margin: auto;
+    line-height: 200px;
+    border-radius: 0.25rem;
+    background: $IMAGE_BACKGROUND;
+  }
+  .image {
+    width: auto;
+    height: auto;
+    max-width: $MAX_IMAGE_SIZE;
+    max-height: $MAX_IMAGE_SIZE;
+    margin: auto;
+  }
+}
+
+.MonsterList {
+  text-align: center;
+}
+
+.monster-card-simple {
+  margin: 0 auto 20px;
+  box-shadow: 0 3px 12px #000;
+
+  .title {
+    font-weight: bold;
+  }
+  .icon {
+    width: $MAX_ICON_SIZE;
+    height: $MAX_ICON_SIZE;
+  }
 }
