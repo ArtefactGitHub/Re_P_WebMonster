@@ -4,8 +4,8 @@ import { connect } from "react-redux"
 const generateRequireSignInWrapper = ({ redirectPathIfNotSignedIn }) => {
   const requireSignInWrapper = PageComponent => {
     class GatedPage extends React.Component {
-      componentWillReceiveProps(nextProps: WrapperProps) {
-        const { history, isSignedIn, hasVerificationBeenAttempted } = nextProps
+      componentDidUpdate() {
+        const { history, isSignedIn, hasVerificationBeenAttempted } = this.props
         if (hasVerificationBeenAttempted && !isSignedIn) {
           history.replace(redirectPathIfNotSignedIn)
         }
