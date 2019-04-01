@@ -1004,6 +1004,13 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"
   integrity sha512-eqz8c/0kwNi/OEHQfvIuJVLTst3in0e7uTKeuY+WL/zfKn0xVujOTp42bS/vUUokhK5P2BppLd9JXMOMHcgbjA==
 
+"@types/react-native@^0.48.7":
+  version "0.48.10"
+  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.48.10.tgz#c808a3ed381b2f5d87f07853ae29def8d4ad9f81"
+  integrity sha512-bLIfTZWizxhLXRYLFEepOKHXTVAtttwQDX3ENgveU2UdfVTLNQfZ9Fg5CtYoTGIV3121uJbtYAy5a6EAEULq4w==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react-redux@^5.0.9":
   version "5.0.21"
   resolved "https://registry.yarnpkg.com/@types/react-redux/-/react-redux-5.0.21.tgz#98a3a371dfc22c894889f660d7515717639d20f4"
@@ -8654,12 +8661,12 @@ redux-thunk@^2.3.0:
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.3.0.tgz#51c2c19a185ed5187aaa9a2d08b666d0d6467622"
   integrity sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==
 
-redux-token-auth@^0.19.0:
-  version "0.19.0"
-  resolved "https://registry.yarnpkg.com/redux-token-auth/-/redux-token-auth-0.19.0.tgz#f3fd6cc412c36d600f10be38b4e9c840118a1863"
-  integrity sha512-z+/WX/RIImGZWn/aUIId2D92ULH2bII7tkc9YyBXGKriinyf9zMHjGE5TGHZkSMFjjXmeGzybCsWCJDq7cwmRw==
+redux-token-auth@kylecorbelli/redux-token-auth:
+  version "0.19.1"
+  resolved "https://codeload.github.com/kylecorbelli/redux-token-auth/tar.gz/9d83b38b6cbcd53e2448fd96c7f694f429eeaf94"
   dependencies:
     "@types/react" "^16.0.5"
+    "@types/react-native" "^0.48.7"
     "@types/react-redux" "^5.0.9"
     axios "^0.16.2"
     react "^15.6.1"
