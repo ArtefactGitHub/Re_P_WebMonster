@@ -1,6 +1,7 @@
 import React from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import "../stylesheets/App.scss"
+import NotificationSystem from "./shared/react-notification-system-redux"
 import Header from "./header"
 import About from "../components/About"
 import RegisterUser from "../components/RegisterUser"
@@ -19,6 +20,8 @@ const App = () => {
   return (
     <Router>
       <div className="App">
+        <NotificationSystem />
+
         <Header />
 
         <div className="main">

@@ -1,5 +1,6 @@
 import { combineReducers } from "redux"
 import { reduxTokenAuthReducer as reduxTokenAuth } from "redux-token-auth"
+import { reducer as notifications } from "react-notification-system-redux"
 
 import monsters from "./monsters"
 import {
@@ -9,6 +10,7 @@ import {
 
 export default combineReducers({
   reduxTokenAuth,
+  notifications,
 
   monsters,
   create_monster,
