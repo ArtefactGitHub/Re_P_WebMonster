@@ -2,6 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import { signInUser } from "../config/redux-token-auth"
 import { Link } from "react-router-dom"
+import NotifyActions from "../actions/shared/notification"
 import {
   Container,
   Row,
@@ -22,6 +23,7 @@ class LoginUser extends React.Component {
     super(props)
     this.state = initial_state
   }
+
   render() {
     const { email, password, isSubmitting } = this.state
     const { handleOnChange, handleOnSubmit } = this
@@ -77,22 +79,35 @@ class LoginUser extends React.Component {
 
   handleOnSubmit = event => {
     event.preventDefault()
-    const { signInUser, history } = this.props
+    const { signInUser, history, notifySuccess, notifyShow } = this.props
     const { email, password } = this.state
+
     signInUser({ email, password })
       .then(res => {
-        console.log("success signInUser", res)
         this.setState(initial_state)
         history.replace("/mypage")
+
+        notifySuccess("ログインしました")
       })
       .catch(error => {
-        console.log("failure signInUser", error.response)
         this.setState(initial_state)
+
+        notifyShow({
+          level: NotifyActions.levels.error,
+          title: "ログイン出来ませんでした",
+          message: error.response.data.errors[0],
+        })
       })
   }
 }
 
+const mapStateToProps = state => {
+  return {
+    notifications: state.notifications,
+  }
+}
+
 export default connect(
-  null,
-  { signInUser }
+  mapStateToProps,
+  { signInUser, ...NotifyActions }
 )(LoginUser)
