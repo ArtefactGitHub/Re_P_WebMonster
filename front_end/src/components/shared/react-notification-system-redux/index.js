@@ -6,7 +6,16 @@ import Notifications from "react-notification-system-redux"
 class Notification extends React.Component {
   render() {
     const { notifications } = this.props
-    return <Notifications notifications={notifications} />
+    const style = {
+      NotificationItem: {
+        // Override the notification item
+        DefaultStyle: {
+          // Applied to every notification, regardless of the notification level
+          whiteSpace: "pre-wrap",
+        },
+      },
+    }
+    return <Notifications notifications={notifications} style={style} />
   }
 }
 
