@@ -1,8 +1,8 @@
 import { signInUser } from "../../config/redux-token-auth"
 
-const updateParams = (key, value) => {
+const signInUpdateParams = (key, value) => {
   return {
-    type: "UPDATE_PARAMS",
+    type: "SIGNIN_UPDATE_PARAMS",
     payload: { [key]: value },
   }
 }
@@ -31,4 +31,4 @@ const signIn = ({ email, password, successCb, errorCb }) => {
   }
 }
 
-export { updateParams, signIn, signInSuccess, signInFailure }
+export { signInUpdateParams, signIn, signInSuccess, signInFailure }

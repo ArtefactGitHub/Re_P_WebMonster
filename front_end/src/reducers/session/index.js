@@ -14,7 +14,7 @@ const signInReducer = (state = initial_state, action) => {
       return {
         ...state,
       }
-    case "UPDATE_PARAMS":
+    case "SIGNIN_UPDATE_PARAMS":
       return {
         ...state,
         ...action.payload,

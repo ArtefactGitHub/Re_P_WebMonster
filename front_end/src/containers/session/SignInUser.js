@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import NotifyActions from "../../actions/shared/notification"
 import SignInUserPresenter from "../../components/session/SignInUser"
-import { updateParams, signIn } from "../../actions/session"
+import { signInUpdateParams, signIn } from "../../actions/session"
 
 class SignInUser extends React.Component {
   render() {
@@ -22,7 +22,7 @@ class SignInUser extends React.Component {
   }
 
   handleOnChange = (event, key) => {
-    this.props.updateParams(key, event.target.value)
+    this.props.signInUpdateParams(key, event.target.value)
   }
 
   handleOnSubmit = event => {
@@ -57,5 +57,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { ...NotifyActions, updateParams, signIn }
+  { ...NotifyActions, signInUpdateParams, signIn }
 )(SignInUser)

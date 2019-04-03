@@ -1,9 +1,9 @@
 import axios from "axios"
 import Settings from "../config/application"
 
-const updateParams = (key, value) => {
+const createMonsterUpdateParams = (key, value) => {
   return {
-    type: "UPDATE_PARAMS",
+    type: "CREATE_MONSTER_UPDATE_PARAMS",
     payload: { [key]: value },
   }
 }
@@ -36,4 +36,4 @@ const submitEnd = () => {
   }
 }
 
-export { updateParams, createMonster, submitStart, submitEnd }
+export { createMonsterUpdateParams, createMonster, submitStart, submitEnd }

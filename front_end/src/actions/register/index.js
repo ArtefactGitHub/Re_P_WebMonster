@@ -1,8 +1,8 @@
 import { registerUser } from "../../config/redux-token-auth"
 
-const updateParams = (key, value) => {
+const registerUpdateParams = (key, value) => {
   return {
-    type: "UPDATE_PARAMS",
+    type: "REGISTER_UPDATE_PARAMS",
     payload: { [key]: value },
   }
 }
@@ -38,4 +38,4 @@ const register = ({
   }
 }
 
-export { updateParams, register, registerSuccess, registerFailure }
+export { registerUpdateParams, register, registerSuccess, registerFailure }

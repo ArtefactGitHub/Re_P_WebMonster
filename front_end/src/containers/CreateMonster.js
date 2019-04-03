@@ -1,7 +1,10 @@
 import React from "react"
 import { connect } from "react-redux"
 import CreateMonsterPresenter from "../components/CreateMonster"
-import { updateParams, createMonster } from "../actions/CreateMonster"
+import {
+  createMonsterUpdateParams,
+  createMonster,
+} from "../actions/CreateMonster"
 
 const range_default_params = {
   min: 5,
@@ -27,15 +30,15 @@ class CreateMonster extends React.Component {
   }
 
   handleOnChangeImage = event => {
-    this.props.updateParams("image", event.target.files[0])
+    this.props.createMonsterUpdateParams("image", event.target.files[0])
   }
 
   handleOnChange = (event, key) => {
-    this.props.updateParams(key, event.target.value)
+    this.props.createMonsterUpdateParams(key, event.target.value)
   }
 
   handleOnChangeParams = (event, key) => {
-    this.props.updateParams(key, event.target.value)
+    this.props.createMonsterUpdateParams(key, event.target.value)
   }
 
   handleOnSubmit = event => {
@@ -58,7 +61,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateParams: (key, value) => dispatch(updateParams(key, value)),
+    createMonsterUpdateParams: (key, value) =>
+      dispatch(createMonsterUpdateParams(key, value)),
     createMonster: monster => dispatch(createMonster(monster)),
   }
 }

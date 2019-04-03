@@ -2,7 +2,7 @@ import React from "react"
 import { connect } from "react-redux"
 import NotifyActions from "../../actions/shared/notification"
 import RegisterUserPresenter from "../../components/register/RegisterUser"
-import { updateParams, register } from "../../actions/register"
+import { registerUpdateParams, register } from "../../actions/register"
 
 class RegisterUser extends React.Component {
   render() {
@@ -29,7 +29,7 @@ class RegisterUser extends React.Component {
   }
 
   handleOnChange = (event, key) => {
-    this.props.updateParams(key, event.target.value)
+    this.props.registerUpdateParams(key, event.target.value)
   }
 
   handleOnSubmit = event => {
@@ -73,5 +73,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { ...NotifyActions, updateParams, register }
+  { ...NotifyActions, registerUpdateParams, register }
 )(RegisterUser)

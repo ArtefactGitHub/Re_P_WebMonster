@@ -17,7 +17,7 @@ const registerReducer = (state = initial_state, action) => {
       return {
         ...state,
       }
-    case "UPDATE_PARAMS":
+    case "REGISTER_UPDATE_PARAMS":
       return {
         ...state,
         ...action.payload,
