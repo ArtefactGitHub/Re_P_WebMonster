@@ -6,7 +6,7 @@ import { updateParams, signIn } from "../actions/session"
 
 class LoginUser extends React.Component {
   render() {
-    const { email, password, isSubmitting } = this.props.sessions
+    const { email, password, isSubmitting } = this.props.session
 
     return (
       <div className="login-user">
@@ -28,8 +28,8 @@ class LoginUser extends React.Component {
   handleOnSubmit = event => {
     event.preventDefault()
 
-    const { history, signIn, notifySuccess, notifyShow, sessions } = this.props
-    const { email, password } = sessions
+    const { history, signIn, notifySuccess, notifyShow, session } = this.props
+    const { email, password } = session
     signIn({
       email,
       password,
@@ -51,7 +51,7 @@ class LoginUser extends React.Component {
 const mapStateToProps = state => {
   return {
     notifications: state.notifications,
-    sessions: state.sessions,
+    session: state.session,
   }
 }
 
