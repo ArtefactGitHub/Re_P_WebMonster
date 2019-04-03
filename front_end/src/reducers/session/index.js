@@ -9,7 +9,6 @@ const signInReducer = (state = initial_state, action) => {
     case "SIGNIN_SUCCESS":
       return {
         ...initial_state,
-        ...action.payload,
       }
     case "SIGNIN_FAILURE":
       return {
