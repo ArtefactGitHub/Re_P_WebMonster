@@ -1,20 +1,26 @@
 import React from "react"
 import { connect } from "react-redux"
-import { signOutUser } from "../../config/redux-token-auth"
+import NotifyActions from "../../actions/shared/notification"
+import { signOut } from "../../actions/session"
 
 class SignOutUser extends React.Component {
   componentDidMount() {
-    const { signOutUser, isSignedIn } = this.props
-    if (!isSignedIn) return
+    if (!this.props.isSignedIn) return
 
-    signOutUser()
-      .then(res => {
-        const { history } = this.props
+    const { history, signOut, notifySuccess, notifyShow } = this.props
+    signOut({
+      successCb: () => {
+        notifySuccess("ログアウトしました")
         history.replace("/about")
-      })
-      .catch(error => {
-        console.log("failure signOutUser", error.response)
-      })
+      },
+      errorCb: error => {
+        notifyShow({
+          level: NotifyActions.levels.error,
+          title: "ログアウト出来ませんでした",
+          message: error.response.data.errors[0],
+        })
+      },
+    })
   }
 
   render() {
@@ -28,5 +34,5 @@ const mapStateToProps = (state: ReduxState) => ({
 
 export default connect(
   mapStateToProps,
-  { signOutUser }
+  { ...NotifyActions, signOut }
 )(SignOutUser)

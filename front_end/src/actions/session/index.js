@@ -1,4 +1,5 @@
 import { signInUser } from "../../config/redux-token-auth"
+import { signOutUser } from "../../config/redux-token-auth"
 
 const signInUpdateParams = (key, value) => {
   return {
@@ -16,7 +17,6 @@ const signInFailure = response => {
     type: "SIGNIN_FAILURE",
   }
 }
-
 const signIn = ({ email, password, successCb, errorCb }) => {
   return dispatch => {
     signInUser({ email, password })(dispatch)
@@ -31,4 +31,16 @@ const signIn = ({ email, password, successCb, errorCb }) => {
   }
 }
 
-export { signInUpdateParams, signIn, signInSuccess, signInFailure }
+const signOut = ({ successCb, errorCb }) => {
+  return dispatch => {
+    signOutUser()(dispatch)
+      .then(res => {
+        successCb()
+      })
+      .catch(error => {
+        errorCb(error)
+      })
+  }
+}
+
+export { signInUpdateParams, signIn, signInSuccess, signInFailure, signOut }
