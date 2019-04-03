@@ -10,7 +10,7 @@ import {
   FormControl,
 } from "react-bootstrap"
 
-const LoginUser = ({
+const SignInUser = ({
   email,
   password,
   isSubmitting,
@@ -18,7 +18,7 @@ const LoginUser = ({
   handleOnSubmit,
 }) => {
   return (
-    <div className="login-user">
+    <div className="signin-user">
       <Container>
         <Row>
           <Col>
@@ -63,4 +63,4 @@ const LoginUser = ({
   )
 }
 
-export default LoginUser
+export default SignInUser

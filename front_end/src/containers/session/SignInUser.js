@@ -1,16 +1,16 @@
 import React from "react"
 import { connect } from "react-redux"
-import NotifyActions from "../actions/shared/notification"
-import LoginUserPresenter from "../components/LoginUser"
-import { updateParams, signIn } from "../actions/session"
+import NotifyActions from "../../actions/shared/notification"
+import SignInUserPresenter from "../../components/session/SignInUser"
+import { updateParams, signIn } from "../../actions/session"
 
-class LoginUser extends React.Component {
+class SignInUser extends React.Component {
   render() {
     const { email, password, isSubmitting } = this.props.session
 
     return (
-      <div className="login-user">
-        <LoginUserPresenter
+      <div className="signin-user">
+        <SignInUserPresenter
           email={email}
           password={password}
           isSubmitting={isSubmitting}
@@ -58,4 +58,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { ...NotifyActions, updateParams, signIn }
-)(LoginUser)
+)(SignInUser)

@@ -5,8 +5,8 @@ import NotificationSystem from "./shared/react-notification-system-redux"
 import Header from "./header"
 import About from "../components/About"
 import RegisterUser from "../components/RegisterUser"
-import LoginUser from "../containers/LoginUser"
-import LogoutUser from "../components/LogoutUser"
+import SignInUser from "../containers/session/SignInUser"
+import SignOutUser from "../components/session/SignOutUser"
 import MonsterList from "../containers/MonsterList"
 import CreateMonster from "../containers/CreateMonster"
 import Mypage from "../components/mypage/Mypage"
@@ -29,11 +29,11 @@ const App = () => {
             <Route exact path="/" component={MonsterList} />
             <Route exact path="/about" component={About} />
             <Route exact path="/signUp" component={RegisterUser} />
-            <Route exact path="/signIn" component={LoginUser} />
+            <Route exact path="/signIn" component={SignInUser} />
             <Route
               exact
               path="/signOut"
-              component={requireSignIn(LogoutUser)}
+              component={requireSignIn(SignOutUser)}
             />
             <Route exact path="/mypage" component={requireSignIn(Mypage)} />
             <Route

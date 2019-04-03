@@ -1,12 +1,12 @@
 import React from "react"
 import { connect } from "react-redux"
-import BeforeLoginHeader from "./BeforeLoginHeader"
-import AfterLoginHeader from "./AfterLoginHeader"
+import BeforeSignInHeader from "./BeforeSignInHeader"
+import AfterSignInHeader from "./AfterSignInHeader"
 
 class Header extends React.Component {
   render() {
     const { isSignedIn } = this.props
-    const Component = isSignedIn ? AfterLoginHeader : BeforeLoginHeader
+    const Component = isSignedIn ? AfterSignInHeader : BeforeSignInHeader
     return (
       <div>
         <Component />
