@@ -9,31 +9,26 @@ const updateParams = (key, value) => {
 const signInSuccess = () => {
   return {
     type: "SIGNIN_SUCCESS",
-    payload: { status: "success" },
   }
 }
 const signInFailure = response => {
   return {
     type: "SIGNIN_FAILURE",
-    payload: { status: "failure", response: response },
-  }
-}
-const signInEnd = () => {
-  return {
-    type: "SIGNIN_END",
   }
 }
 
-const signIn = ({ email, password }) => {
+const signIn = ({ email, password, successCb, errorCb }) => {
   return dispatch => {
     signInUser({ email, password })(dispatch)
       .then(res => {
         dispatch(signInSuccess())
+        successCb()
       })
       .catch(error => {
-        dispatch(signInFailure(error.response))
+        dispatch(signInFailure())
+        errorCb(error)
       })
   }
 }
 
-export { updateParams, signIn, signInSuccess, signInFailure, signInEnd }
+export { updateParams, signIn, signInSuccess, signInFailure }

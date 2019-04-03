@@ -2,9 +2,6 @@ const initial_state = {
   email: "",
   password: "",
   isSubmitting: false,
-
-  status: "",
-  response: null,
 }
 
 const signInReducer = (state = initial_state, action) => {
@@ -17,10 +14,7 @@ const signInReducer = (state = initial_state, action) => {
     case "SIGNIN_FAILURE":
       return {
         ...state,
-        ...action.payload,
       }
-    case "SIGNIN_END":
-      return initial_state
     case "UPDATE_PARAMS":
       return {
         ...state,
