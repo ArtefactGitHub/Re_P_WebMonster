@@ -1,11 +1,12 @@
 import React from "react"
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom"
 import "../stylesheets/App.scss"
+import NotificationSystem from "./shared/react-notification-system-redux"
 import Header from "./header"
 import About from "../components/About"
-import RegisterUser from "../components/RegisterUser"
-import LoginUser from "../components/LoginUser"
-import LogoutUser from "../components/LogoutUser"
+import RegisterUser from "../containers/register/RegisterUser"
+import SignInUser from "../containers/session/SignInUser"
+import SignOutUser from "../containers/session/SignOutUser"
 import MonsterList from "../containers/MonsterList"
 import CreateMonster from "../containers/CreateMonster"
 import Mypage from "../components/mypage/Mypage"
@@ -19,6 +20,8 @@ const App = () => {
   return (
     <Router>
       <div className="App">
+        <NotificationSystem />
+
         <Header />
 
         <div className="main">
@@ -26,11 +29,11 @@ const App = () => {
             <Route exact path="/" component={MonsterList} />
             <Route exact path="/about" component={About} />
             <Route exact path="/signUp" component={RegisterUser} />
-            <Route exact path="/signIn" component={LoginUser} />
+            <Route exact path="/signIn" component={SignInUser} />
             <Route
               exact
               path="/signOut"
-              component={requireSignIn(LogoutUser)}
+              component={requireSignIn(SignOutUser)}
             />
             <Route exact path="/mypage" component={requireSignIn(Mypage)} />
             <Route

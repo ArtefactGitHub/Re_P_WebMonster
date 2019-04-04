@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import { Navbar, Nav, NavDropdown, Button, Image } from "react-bootstrap"
 
-const AfterLoginHeader = () => {
+const AfterSignInHeader = () => {
   return (
     <div className="header">
       <Navbar collapseOnSelect expand="sm" bg="dark" variant="dark">
@@ -37,7 +37,7 @@ const AfterLoginHeader = () => {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Link to="/signOut" className="link-to-logout">
+            <Link to="/signOut" className="link-to-signout">
               <Button className="btn btn-default btn-raised">ログアウト</Button>
             </Link>
           </Nav>
@@ -47,4 +47,4 @@ const AfterLoginHeader = () => {
   )
 }
 
-export default AfterLoginHeader
+export default AfterSignInHeader

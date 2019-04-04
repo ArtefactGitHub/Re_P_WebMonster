@@ -1,26 +1,33 @@
 import axios from "axios"
 import Settings from "../config/application"
 
-const updateParams = (key, value) => {
+const createMonsterUpdateParams = (key, value) => {
   return {
-    type: "UPDATE_PARAMS",
+    type: "CREATE_MONSTER_UPDATE_PARAMS",
     payload: { [key]: value },
   }
 }
+const createMonsterCreate = response => {
+  return {
+    type: "CREATE_MONSTER",
+    payload: { monster: response.data },
+  }
+}
 
-const createMonster = monster => {
+const createMonster = ({ monster, successCb, errorCb }) => {
   return dispatch => {
     dispatch(submitStart())
 
     axios
       .post(`${Settings.API_URL}/monsters`, monster)
-      .then(res => {
+      .then(response => {
         dispatch(submitEnd())
-        dispatch({ type: "CREATE_MONSTER", payload: { monster: res.data } })
+        dispatch(createMonsterCreate(response))
+        successCb()
       })
-      .catch(data => {
+      .catch(error => {
         dispatch(submitEnd())
-        console.log("failure", data)
+        errorCb(error)
       })
   }
 }
@@ -36,4 +43,4 @@ const submitEnd = () => {
   }
 }
 
-export { updateParams, createMonster, submitStart, submitEnd }
+export { createMonsterUpdateParams, createMonster, submitStart, submitEnd }

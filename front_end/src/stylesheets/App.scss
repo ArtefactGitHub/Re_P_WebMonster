@@ -24,10 +24,10 @@ body {
   .logo {
     width: 5rem;
   }
-  .link-to-login {
+  .link-to-signin {
     margin-left: auto;
   }
-  .link-to-logout {
+  .link-to-signout {
     margin-left: auto;
   }
 }
@@ -36,7 +36,7 @@ body {
   margin: 2rem 0 2rem;
 }
 
-.login-user {
+.signin-user {
   form {
     margin: 2rem 0 2rem;
   }

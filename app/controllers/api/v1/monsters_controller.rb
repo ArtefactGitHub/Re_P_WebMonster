@@ -10,7 +10,12 @@ module Api
         if @monster.save
           render status: 200, json: @monster
         else
-          render status: 500, json: { status: 500, message: 'Internal Server Error' }
+          render status: 500, json: { status: 500,
+                                      message: 'Internal Server Error',
+                                      errors: {
+                                        full_messages: @monster&.errors&.full_messages
+                                      }
+                                    }
         end
       end
 

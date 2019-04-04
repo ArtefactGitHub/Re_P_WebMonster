@@ -2,7 +2,7 @@ import React from "react"
 import { Link } from "react-router-dom"
 import { Navbar, Button, Image } from "react-bootstrap"
 
-const BeforeLoginHeader = () => {
+const BeforeSignInHeader = () => {
   return (
     <div className="header">
       <Navbar bg="dark" variant="dark">
@@ -11,7 +11,7 @@ const BeforeLoginHeader = () => {
             <Image src="/logo.jpg" className="logo" />
           </Navbar.Brand>
         </Link>
-        <Link to="/signIn" className="link-to-login">
+        <Link to="/signIn" className="link-to-signin">
           <Button className="btn btn-default btn-raised">ログイン</Button>
         </Link>
       </Navbar>
@@ -19,4 +19,4 @@ const BeforeLoginHeader = () => {
   )
 }
 
-export default BeforeLoginHeader
+export default BeforeSignInHeader

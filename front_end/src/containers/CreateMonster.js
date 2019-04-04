@@ -1,7 +1,12 @@
 import React from "react"
+import { bindActionCreators } from "redux"
 import { connect } from "react-redux"
+import NotifyActions from "../actions/shared/notification"
 import CreateMonsterPresenter from "../components/CreateMonster"
-import { updateParams, createMonster } from "../actions/CreateMonster"
+import {
+  createMonsterUpdateParams,
+  createMonster,
+} from "../actions/CreateMonster"
 
 const range_default_params = {
   min: 5,
@@ -27,25 +32,39 @@ class CreateMonster extends React.Component {
   }
 
   handleOnChangeImage = event => {
-    this.props.updateParams("image", event.target.files[0])
+    this.props.createMonsterUpdateParams("image", event.target.files[0])
   }
 
   handleOnChange = (event, key) => {
-    this.props.updateParams(key, event.target.value)
+    this.props.createMonsterUpdateParams(key, event.target.value)
   }
 
   handleOnChangeParams = (event, key) => {
-    this.props.updateParams(key, event.target.value)
+    this.props.createMonsterUpdateParams(key, event.target.value)
   }
 
   handleOnSubmit = event => {
     event.preventDefault()
+    const { createMonster, notifySuccess, notifyShow, monster } = this.props
 
     const formData = new FormData()
-    Object.entries(this.props.monster).map(([key, value]) =>
-      formData.append([key], value)
-    )
-    this.props.createMonster(formData)
+    Object.entries(monster).map(([key, value]) => formData.append([key], value))
+    createMonster({
+      monster: formData,
+      successCb: () => {
+        notifySuccess("モンスターを作成しました")
+      },
+      errorCb: error => {
+        notifyShow({
+          level: NotifyActions.levels.error,
+          title: "モンスターを作成出来ませんでした",
+          message:
+            "full_messages" in error.response.data.errors
+              ? error.response.data.errors.full_messages.join("\n")
+              : "",
+        })
+      },
+    })
   }
 }
 
@@ -58,8 +77,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateParams: (key, value) => dispatch(updateParams(key, value)),
+    createMonsterUpdateParams: (key, value) =>
+      dispatch(createMonsterUpdateParams(key, value)),
     createMonster: monster => dispatch(createMonster(monster)),
+    ...bindActionCreators(NotifyActions, dispatch),
   }
 }
 

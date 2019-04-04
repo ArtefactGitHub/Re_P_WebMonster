@@ -9,6 +9,7 @@ const config = {
   },
   userRegistrationAttributes: {
     name: "name",
+    passwordConfirmation: "password_confirmation",
   },
   storage: {
     flushGetRequests: false,

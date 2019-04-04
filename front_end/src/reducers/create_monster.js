@@ -6,7 +6,7 @@ const createMonsterReducer = (state = initial_state, action) => {
     case "CREATE_MONSTER":
       return initial_state
 
-    case "UPDATE_PARAMS":
+    case "CREATE_MONSTER_UPDATE_PARAMS":
       return {
         ...state,
         ...action.payload,
