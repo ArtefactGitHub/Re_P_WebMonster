@@ -7,20 +7,27 @@ const createMonsterUpdateParams = (key, value) => {
     payload: { [key]: value },
   }
 }
+const createMonsterCreate = response => {
+  return {
+    type: "CREATE_MONSTER",
+    payload: { monster: response.data },
+  }
+}
 
-const createMonster = monster => {
+const createMonster = ({ monster, successCb, errorCb }) => {
   return dispatch => {
     dispatch(submitStart())
 
     axios
       .post(`${Settings.API_URL}/monsters`, monster)
-      .then(res => {
+      .then(response => {
         dispatch(submitEnd())
-        dispatch({ type: "CREATE_MONSTER", payload: { monster: res.data } })
+        dispatch(createMonsterCreate(response))
+        successCb()
       })
-      .catch(data => {
+      .catch(error => {
         dispatch(submitEnd())
-        console.log("failure", data)
+        errorCb(error)
       })
   }
 }
