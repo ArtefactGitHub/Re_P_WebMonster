@@ -1,34 +1,25 @@
 import axios from "axios"
+import { authHeaderKeys } from "../config/redux-token-auth"
 
+// see: https://github.com/kylecorbelli/redux-token-auth/blob/master/src/actions.ts#L239-L243
 const getVerificationParams = () => {
-  if (localStorage.getItem("access-token")) {
-    const required = {
-      "access-token": localStorage.getItem("access-token"),
-      client: localStorage.getItem("client"),
-      uid: localStorage.getItem("uid"),
-    }
-    const optional = {
-      "token-type": localStorage.getItem("token-type"),
-      expiry: localStorage.getItem("expiry"),
-    }
-    return {
-      ...required,
-      ...optional,
-    }
-  }
+  const result = {}
+  authHeaderKeys.forEach(key => {
+    if (localStorage.getItem(key)) result[key] = localStorage.getItem(key)
+  })
 
-  return {}
+  return result
 }
 
 export default (() => {
   const result = axios.create()
-  const token = getVerificationParams()
+  const verificationParams = getVerificationParams()
   result.interceptors.request.use(
     request => {
       console.log("Starting Request: ", request)
 
       // request.headers.Authorization = `Bearer ${token}`
-      request.headers = { ...token }
+      request.headers = { ...verificationParams }
       return request
     },
     function(error) {
