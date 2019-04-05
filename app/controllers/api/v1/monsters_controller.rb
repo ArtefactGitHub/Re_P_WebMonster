@@ -1,6 +1,8 @@
 module Api
   module V1
     class MonstersController < ApplicationController
+      before_action :authenticate_user!, except: %i[index]
+
       def index
         render json: Monster.all
       end
