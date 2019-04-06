@@ -1,4 +1,4 @@
-import axios from "axios"
+import axios from "./shared"
 import Settings from "../config/application"
 
 const createMonsterUpdateParams = (key, value) => {
