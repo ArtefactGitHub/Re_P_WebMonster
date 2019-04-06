@@ -23,6 +23,7 @@ const saveHeaders = response => {
     const storage = getStorage()
     authHeaderKeys.forEach((key: string) => {
       // not to overwrite with empty parameters
+      // see: https://github.com/lynndylanhurley/devise_token_auth/issues/1147#issuecomment-415195924
       if (response.headers[key]) {
         storage.setItem(key, response.headers[key])
         // for redux-token-auth
