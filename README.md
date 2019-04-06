@@ -21,6 +21,55 @@ React-Redux 及び RailsAPI モードのアプリ開発の学習のためのリ�
 
 - See `Gemfile`.
 
+## Devise version
+#### devise： 4.6.2
+
+#### devise_token_auth： 1.1.0
+<details><div>
+  
+```rb
+# Gemfile
+gem 'devise_token_auth', github: 'lynndylanhurley/devise_token_auth'
+```
+  
+```rb
+# Gemfile.lock
+remote: https://github.com/lynndylanhurley/devise_token_auth.git
+revision: f929fb458012a91474f92cd948739cea98bcb419
+specs:
+  devise_token_auth (1.1.0)
+    devise (> 3.5.2, < 4.7)
+    rails (>= 4.2.0, < 6)
+```
+</div></details>
+  
+#### redux-token-auth： 0.19.1
+<details><div>
+  
+```rb
+# package.json
+  "redux-token-auth": "zopelee/redux-token-auth"
+```
+  
+```rb
+# yarn.lock
+redux-token-auth@zopelee/redux-token-auth:
+  version "0.19.1"
+  resolved "https://codeload.github.com/zopelee/redux-token-auth/tar.gz/3189f4d20025bcf316a43ce8d5fea72fb9f6edad"
+  dependencies:
+    "@callstack/async-storage" "^1.1.0"
+    "@types/react" "^16.7.9"
+    "@types/react-native" "^0.57.15"
+    "@types/react-redux" "^6.0.10"
+    axios "^0.18.0"
+    react "^16.6.3"
+    react-native-storage "^1.0.0-beta.0"
+    react-redux "^5.1.1"
+    redux "^4.0.1"
+```
+</div></details>
+
+
 ## Project initiation
 
 - Gem のインストール
